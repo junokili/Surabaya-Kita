@@ -18,8 +18,10 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-def title():
-    return "Surabaya Kita"
+@app.route('/get_events')
+def get_events():
+    events = mongo.db.events.find()
+    return render_template("events.html", events=events)
 
 
 if __name__ == '__main__':
