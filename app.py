@@ -17,6 +17,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.route('/')
+def home():
+    return render_template("base.html")
+
+
 @app.route('/get_events')
 def get_events():
     events = mongo.db.events.find()

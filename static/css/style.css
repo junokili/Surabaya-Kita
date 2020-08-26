@@ -1,9 +1,10 @@
-body {
-    font: #aaaaaa;
-}
-
 p {
     padding: 10px 25px 10px;
+    color: #808080;
+}
+
+h3 {
+    text-shadow: 1px 1px #aaaaaa;
 }
 
 #sby-kita {

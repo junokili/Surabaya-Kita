@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3 class="center-align"></h3>
+<h3 class="center-align cyan-text text-accent-3 text-shadow">Login</h3>
 
 <div class="row">
 	<form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
@@ -9,24 +9,24 @@
         <!-- username -->
 			<div class="row">
 				<div class="input-field col s12">
-					<i class="fas fa-user-cog prefix cyan-text text-lighten-2"></i>
+					<i class="fas fa-user-cog prefix cyan-text text-accent-3"></i>
 					<input id="username" name="username" type="text" class="validate"
                     minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-					<label for="username" class="cyan-text text-lighten-2">Username</label>
+					<label for="username" class="cyan-text text-accent-3">  username</label>
 				</div>
 			</div>
             <!-- password -->
 			<div class="row">
 				<div class="input-field col s12">
-                <i class="fas fa-user-lock prefix cyan-text text-lighten-2"></i>
+                <i class="fas fa-user-lock prefix cyan-text text-accent-3"></i>
 					<input id="password" name="password" type="password" class="validate"
                     minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-					<label for="password" class="cyan-text text-lighten-2">Password</label>
+					<label for="password" class="cyan-text text-accent-3">  password</label>
 				</div>
 			</div>
             <!-- register -->
             <div class="row">
-            <button type="submit" class="col s12 btn-large cyan lighten-2">
+            <button type="submit" class="col s12 btn-large cyan accent-3">
             LOGIN <i class="fas fa-sign-in-alt"></i></button>
             </div>
 		</div>
@@ -35,8 +35,8 @@
 
 <div class="row">
 <div class="col s12">
-<p class="center-align">New here? 
-<a class="cyan-text text-lighten-2" href="{{ url_for('sign_up') }}">
+<p class="center-align">Haven't joined us yet? 
+<a class="cyan-text text-accent-3" href="{{ url_for('sign_up') }}">
 Sign Up</a>
 </p>
 </div>
