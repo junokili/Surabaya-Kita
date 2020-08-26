@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surabaya Kita</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 {% for event in events %}
 {{ event.event_name }}<br>
 {{ event.event_description }}<br>
+{{ event.location }}<br>
+{{ event.meet_point }}<br>
+{{ event.date_of_event }}<br>
+{{ event.language }}<br>
+{{ event.free_event }}<br>
+{{ event.created_by }}<br>
 {% endfor %}
-</body>
-</html>
+{% endblock %}
