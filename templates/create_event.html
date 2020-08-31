@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="cyan-text text-accent-3 center-align">Create Event</h3>
+  <div class="card-panel grey lighten-5">
+  <div class="row">
+    <form class="col s12" method="POST" action="{{ url_for('create_event') }}">
+    <!-- event category -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-folder-open prefix cyan-text text-accent-3"></i>
+    <select id="category_name" name="category_name" class="validate" required>
+      <option value="" disabled selected>Choose category</option>
+      {% for category in categories %}
+        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+      {% endfor %}
+    </select>
+    <label for="category_name">Event Category</label>
+      </div>
+  </div>
+  <!-- event name -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="fas fa-pencil-alt prefix cyan-text text-accent-3"></i>
+          <input id="event_name" name="event_name" type="text" class="validate"
+          minlength="5" maxlength="50" required>
+          <label for="event_name">Event Name</label>
+        </div>
+      </div>
+      <!-- event description -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="fas fa-align-left prefix cyan-text text-accent-3"></i>
+          <textarea id="event_description" name="event_description" class="materialize-textarea validate" 
+          minlength="5" maxlength="250" required></textarea>
+          <label for="event_description">Event Description</label>
+      </div>
+      </div>
+<!-- event date -->
+           <div class="row">
+        <div class="input-field col s12">
+          <i class="fas fa-calendar-alt prefix cyan-text text-accent-3"></i>
+          <input id="event_date" name="due_date" type="text" class="datepicker validate"
+          required>
+          <label for="event_date">Date of Event</label>
+        </div>
+      </div>
+      <div class="row">
+      <div class="input-field col s12">
+        <!-- Switch -->
+        <div class="switch">
+                  <i class="fas fa-exclamation-circle prefix cyan-text text-accent-3"></i>
+            <label for="is_urgent">
+            <input type="checkbox" id="free_event" name="free_event">
+            <span class="lever"></span>
+            Free Event
+            </label>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+        <div class="col s12 center-align">
+          <button class="btn-large cyan accent-3 text-shadow" type="submit">
+          Create Event
+    <i class="fas fa-plus-square right"></i>
+  </button>
+        </div>
+        </div>
+      </div>
+      </div>   
+    </form>
+  </div>
+
+{% endblock %}

@@ -3,8 +3,17 @@ p {
     color: #808080;
 }
 
+
+.text-shadow {
+    text-shadow: 1px 1px #aaaaaa;)
+}
+
 h3 {
     text-shadow: 1px 1px #aaaaaa;
+}
+
+.white-text {
+    color: white;
 }
 
 #sby-kita {
@@ -22,4 +31,21 @@ h3 {
 #search-bar {
     max-height: 85px;
     padding-left: 40px;
+}
+
+.flashes h4{
+    line-height: 2;
+}
+
+.btn-small {
+    margin: 5px;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.collapsible-header .col strong {
+    margin: 5px;
+    line-height: 42px;
 }

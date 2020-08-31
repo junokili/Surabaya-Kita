@@ -97,6 +97,93 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route('/get_categories')
+def get_categories():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template('categories.html', categories=categories)
+
+
+@app.route('/add_category', methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        category = {
+            'category_name': request.form.get('category_name')
+        }
+        mongo.db.categories.insert_one(category)
+        flash("New Category Added!")
+        return redirect(url_for('get_categories'))
+
+    return render_template('add_category.html')
+
+
+@app.route('/edit_category/<category_id>', methods=["GET", "POST"])
+def edit_category(category_id):
+    if request.method == "POST":
+        submit = {
+            'category_name': request.form.get('category_name')
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category updated!")
+        return redirect(url_for('get_categories'))
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template('edit_category.html', category=category)
+
+
+@app.route('/delete_category/<category_id>')
+def delete_category(category_id):
+    mongo.db.categories.remove({'_id': ObjectId(category_id)})
+    flash("Category deleted")
+    return redirect(url_for('get_categories'))
+
+
+@app.route('/create_event', methods=["GET", "POST"])
+def create_event():
+    if request.method == "POST":
+        free_event = "on" if request.form.get("free_event") else "off"
+        event = {
+            "category_name": request.form.get("category_name"),
+            "event_name": request.form.get("event_name"),
+            "event_description": request.form.get("event_description"),
+            "free_event": free_event,
+            "event_date": request.form.get("event_date"),
+            "created_by": session["user"],
+        }
+        mongo.db.events.insert_one(event)
+        flash("New event created!")
+        return redirect(url_for('get_events'))
+
+    categories = mongo.db.categories.find().sort('category_name', 1)
+    return render_template('create_event.html', categories=categories)
+
+
+@app.route('/edit_event/<event_id>', methods=["GET", "POST"])
+def edit_event(event_id):
+    if request.method == "POST":
+        free_event = "on" if request.form.get("free_event") else "off"
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "event_name": request.form.get("event_name"),
+            "event_description": request.form.get("event_description"),
+            "free_event": free_event,
+            "event_date": request.form.get("event_date"),
+            "created_by": session["user"],
+        }
+        mongo.db.events.update({"_id": ObjectId(event_id)}, submit)
+        flash("Event updated!")
+
+    event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
+    categories = mongo.db.categories.find().sort('category_name', 1)
+    return render_template('edit_event.html',
+                           event=event, categories=categories)
+
+
+@app.route('/delete_event/<event_id>')
+def delete_event(event_id):
+    mongo.db.events.remove({"_id": ObjectId(event_id)})
+    flash("Event deleted")
+    return redirect(url_for('get_events'))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

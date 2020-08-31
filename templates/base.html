@@ -20,12 +20,12 @@
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a class="active" href="{{ url_for('get_events') }}">Events</a></li>
         {% if session.user %}   
-        <li class="tab"><a href="#">My Profile</a></li>
-        <li class="tab"><a href="#">Create Event</a></li>
+        <li class="tab"><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
+        <li class="tab"><a href="{{ url_for('create_event') }}">Create Event</a></li>
             {% if session.user |lower == "admin"|lower %}
-        <li class="tab"><a href="#">Manage Categories</a></li>
+        <li class="tab"><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
             {% endif %}        
-        <li><a href="#">Log Out</a></li>
+        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
         <li><a href="{{ url_for('login') }}" class="waves-effect waves-light text-shadow light-green accent-2 btn">Log In</a></li>
         <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
@@ -39,17 +39,30 @@
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('get_events') }}">Events</a></li>
         {% if session.user %}
-        <li><a href="#">My Profile</a></li>
-        <li><a href="#">Create Event</a></li>
+        <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
+        <li><a href="{{ url_for('create_event') }}">Create Event</a></li>
         {% if session.user |lower == "admin"|lower %}
-        <li><a href="#">Manage Categories</a></li>
+        <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
         {% endif %}
-        <li><a href="#">Log Out</a></li>
+        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         {% else %}
         <li><a href="{{ url_for('login') }}">Log In</a></li>
         <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
         {% endif %}
   </ul> 
+
+<section>
+<!-- for flash message -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="row flashes">
+<h4 class="light-green accent-2 center-align white-text">{{ message }}</h4> 
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+</section>
 
     {% block content %}
 
