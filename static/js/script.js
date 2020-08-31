@@ -5,10 +5,20 @@ $(document).ready(function(){
     $('select').formSelect();
     $('.datepicker').datepicker({
         format: "dd mmmm, yyyy",
-        yearRange: 3,
+        yearRange: 1,
         showClearBtn: true,
         i18n: {
-            done: "Select"
+            done: "OK"
+        }
+    });
+    $('.timepicker').timepicker({
+        defaultTime: "09:00",
+        fromNow: 0,
+        showClearBtn: true,
+        i18n: {
+            clear: "clear",
+            cancel: "cancel",
+            done: "OK"
         }
     });
     validateMaterializeSelect();

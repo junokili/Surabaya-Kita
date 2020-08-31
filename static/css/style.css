@@ -29,7 +29,7 @@ h3 {
 }
 
 #search-bar {
-    max-height: 85px;
+    max-height: 95px;
     padding-left: 40px;
 }
 
@@ -48,4 +48,23 @@ h3 {
 .collapsible-header .col strong {
     margin: 5px;
     line-height: 42px;
+}
+
+.all-events-button {
+    margin-top: 25px;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+  background-color: #84ffff;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: #00e5ff ;
+}
+
+@media (max-width: 800px) {
+
+#sby-kita {
+    margin-left: 0px;
+}
 }

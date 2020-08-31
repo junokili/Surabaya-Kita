@@ -7,7 +7,7 @@
     <!-- event category -->
     <div class="row">
       <div class="input-field col s12">
-        <i class="fas fa-folder-open prefix cyan-text text-accent-3"></i>
+        <i class="fas fa-list-ul prefix cyan-text text-accent-3"></i>
     <select id="category_name" name="category_name" class="validate" required>
       <option value="" disabled selected>Choose category</option>
       {% for category in categories %}
@@ -20,7 +20,7 @@
   <!-- event name -->
       <div class="row">
         <div class="input-field col s12">
-          <i class="fas fa-pencil-alt prefix cyan-text text-accent-3"></i>
+          <i class="fas fa-exclamation-circle prefix cyan-text text-accent-3"></i>
           <input id="event_name" name="event_name" type="text" class="validate"
           minlength="5" maxlength="50" required>
           <label for="event_name">Event Name</label>
@@ -29,7 +29,7 @@
       <!-- event description -->
       <div class="row">
         <div class="input-field col s12">
-          <i class="fas fa-align-left prefix cyan-text text-accent-3"></i>
+          <i class="fas fa-edit prefix cyan-text text-accent-3"></i>
           <textarea id="event_description" name="event_description" class="materialize-textarea validate" 
           minlength="5" maxlength="250" required></textarea>
           <label for="event_description">Event Description</label>
@@ -44,28 +44,72 @@
           <label for="event_date">Date of Event</label>
         </div>
       </div>
-      <div class="row">
+<!-- event time -->
+           <div class="row">
+        <div class="input-field col s12">
+          <i class="fas fa-clock prefix cyan-text text-accent-3"></i>
+          <input id="event_time" name="event_time" type="text" class="timepicker validate"
+          required>
+          <label for="event_time">Time of Event</label>
+        </div>
+      </div>
+      <!-- event location -->
+    <div class="row">
       <div class="input-field col s12">
+        <i class="fas fa-map prefix cyan-text text-accent-3"></i>
+    <select id="location" name="location" class="validate" required>
+      <option value="" disabled selected>Choose event area</option>
+      {% for location in locations %}
+        <option value="{{ location.location }}">{{ location.location }}</option>
+      {% endfor %}
+    </select>
+    <label for="location">Event Area</label>
+      </div>
+  </div>
+      <!-- event meet point -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="fas fa-map-marker-alt prefix cyan-text text-accent-3"></i>
+          <textarea id="meet_point" name="meet_point" class="materialize-textarea validate" 
+          minlength="5" maxlength="50" required></textarea>
+          <label for="meet_point">Meet Point</label>
+      </div>
+      </div>
+<!-- event language -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-comments prefix cyan-text text-accent-3"></i>
+    <select id="language" name="language" class="validate" required>
+      <option value="" disabled selected>Choose language</option>
+      {% for language in languages %}
+        <option value="{{ language.language }}">{{ language.language }}</option>
+      {% endfor %}
+    </select>
+    <label for="language">Event Language</label>
+      </div>
+  </div>
         <!-- Switch -->
+                   <div class="row">
+        <div class="input-field col s12">
         <div class="switch">
-                  <i class="fas fa-exclamation-circle prefix cyan-text text-accent-3"></i>
-            <label for="is_urgent">
+                  <i class="fas fa-comment-dollar prefix cyan-text text-accent-3"></i>
+            <label for="free_event">
             <input type="checkbox" id="free_event" name="free_event">
             <span class="lever"></span>
             Free Event
             </label>
         </div>
+        </div>
+                   </div>
         <!-- submit button -->
         <div class="row">
         <div class="col s12 center-align">
-          <button class="btn-large cyan accent-3 text-shadow" type="submit">
+          <button class="btn-large cyan accent-3" type="submit">
           Create Event
     <i class="fas fa-plus-square right"></i>
   </button>
         </div>
         </div>
-      </div>
-      </div>   
     </form>
   </div>
 

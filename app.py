@@ -22,9 +22,10 @@ def home():
     return render_template("base.html")
 
 
-@app.route('/get_events')
-def get_events():
-    events = mongo.db.events.find()
+@app.route('/search', methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    events = list(mongo.db.events.find({"$text": {"$search": query}}))
     return render_template("events.html", events=events)
 
 
@@ -136,6 +137,12 @@ def delete_category(category_id):
     return redirect(url_for('get_categories'))
 
 
+@app.route('/get_events')
+def get_events():
+    events = mongo.db.events.find()
+    return render_template("events.html", events=events)
+
+
 @app.route('/create_event', methods=["GET", "POST"])
 def create_event():
     if request.method == "POST":
@@ -146,14 +153,21 @@ def create_event():
             "event_description": request.form.get("event_description"),
             "free_event": free_event,
             "event_date": request.form.get("event_date"),
+            "event_time": request.form.get("event_time"),
+            "location": request.form.get("location"),
+            "meet_point": request.form.get("meet_point"),
+            "language": request.form.get("language"),
             "created_by": session["user"],
         }
         mongo.db.events.insert_one(event)
         flash("New event created!")
         return redirect(url_for('get_events'))
 
+    locations = mongo.db.locations.find().sort('location', 1)
     categories = mongo.db.categories.find().sort('category_name', 1)
-    return render_template('create_event.html', categories=categories)
+    languages = mongo.db.languages.find().sort('language', 1)
+    return render_template('create_event.html', categories=categories,
+                           languages=languages, locations=locations)
 
 
 @app.route('/edit_event/<event_id>', methods=["GET", "POST"])
