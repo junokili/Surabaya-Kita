@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<h3 class="cyan-text text-accent-3 center-align">Create Event</h3>
-  <div class="card-panel grey lighten-5">
+<div class="row flashes">
+<h4 class="cyan accent-3 center-align white-text">Create your own event</h4> 
+</div>
+<p>Fill in the form below to add your own event. Please fill in additional details as possible 
+in the event description, such as distance / duration and pace for a bike ride or a walk.
+If you don't think we have the right category yet for your event then please 
+<a href="{{ url_for('contact_us') }}" class="cyan-text text-accent-3">contact us</a> we can 
+and we'll see what we can do! </p> 
+<div class="card-panel grey lighten-5">
   <div class="row">
     <form class="col s12" method="POST" action="{{ url_for('create_event') }}">
     <!-- event category -->
@@ -111,6 +118,7 @@
         </div>
         </div>
     </form>
+  </div>
   </div>
 
 {% endblock %}

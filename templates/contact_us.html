@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row flashes">
+<h4 class="cyan accent-3 center-align white-text">Contact us</h4> 
+</div>
+<p class="center-align" id="contact-info">
+        Send an email to info@surabaya-kita.com<br/> 
+        Or contact us using the form below:</p>
+<div class="card-panel grey lighten-5">
+    <div class="row">
+        <div class="col m10 offset-m1 s12">
+            <div class="row">
+                <form class="col m8 offset-m2 s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+        <i class="fas fa-user prefix cyan-text text-accent-3"></i>
+                            <input id="name" type="text">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="input-field col s12">
+        <i class="fas fa-envelope prefix cyan-text text-accent-3"></i>
+                            <input id="email" type="email" class="form-input">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-field col s12">
+                        <i class="fas fa-comment-dots prefix cyan-text text-accent-3"></i>
+                          <textarea id="message" class="materialize-textarea"></textarea>
+                          <label for="message">Message</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m12 center-align">
+                         <button class="btn-large cyan accent-3" type="submit">
+                         Send Message <i class="fas fa-arrow-alt-circle-right right"></i>
+
+                         </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>	
+</div>
+        <div id="email-success"></div>
+
+{% endblock %}
