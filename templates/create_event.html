@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row flashes">
-<h4 class="cyan accent-3 center-align white-text">Create your own event</h4> 
+<h4 class="cyan accent-3 center-align white-text header-shadow">Create your own event</h4> 
 </div>
-<p>Fill in the form below to add your own event. Please fill in additional details as possible 
-in the event description, such as distance / duration and pace for a bike ride or a walk.
+<p>Fill in the form below to add your own event. Please fill in necessary additional details 
+in the event description, including any event fees or requirements and e.g distance / duration and pace for a bike ride or walk.
 If you don't think we have the right category yet for your event then please 
 <a href="{{ url_for('contact_us') }}" class="cyan-text text-accent-3">contact us</a> we can 
 and we'll see what we can do! </p> 
+<div class="container">
 <div class="card-panel grey lighten-5">
   <div class="row">
     <form class="col s12" method="POST" action="{{ url_for('create_event') }}">
@@ -18,7 +19,7 @@ and we'll see what we can do! </p>
     <select id="category_name" name="category_name" class="validate" required>
       <option value="" disabled selected>Choose category</option>
       {% for category in categories %}
-        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+        <option class="my-blue" value="{{ category.category_name }}">{{ category.category_name }}</option>
       {% endfor %}
     </select>
     <label for="category_name">Event Category</label>
@@ -46,7 +47,7 @@ and we'll see what we can do! </p>
            <div class="row">
         <div class="input-field col s12">
           <i class="fas fa-calendar-alt prefix cyan-text text-accent-3"></i>
-          <input id="event_date" name="due_date" type="text" class="datepicker validate"
+          <input id="event_date" name="event_date" type="text" class="datepicker validate"
           required>
           <label for="event_date">Date of Event</label>
         </div>
@@ -82,28 +83,15 @@ and we'll see what we can do! </p>
           <label for="meet_point">Meet Point</label>
       </div>
       </div>
-<!-- event language -->
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="fas fa-comments prefix cyan-text text-accent-3"></i>
-    <select id="language" name="language" class="validate" required>
-      <option value="" disabled selected>Choose language</option>
-      {% for language in languages %}
-        <option value="{{ language.language }}">{{ language.language }}</option>
-      {% endfor %}
-    </select>
-    <label for="language">Event Language</label>
-      </div>
-  </div>
         <!-- Switch -->
                    <div class="row">
         <div class="input-field col s12">
         <div class="switch">
                   <i class="fas fa-comment-dollar prefix cyan-text text-accent-3"></i>
-            <label for="free_event">
-            <input type="checkbox" id="free_event" name="free_event">
+                  <label for="paid_event">
+            <input type="checkbox" id="paid_event" name="paid_event">
             <span class="lever"></span>
-            Free Event
+             Select if there is a fee for this event. Please include fee in event description.
             </label>
         </div>
         </div>
@@ -120,5 +108,5 @@ and we'll see what we can do! </p>
     </form>
   </div>
   </div>
-
+</div>
 {% endblock %}

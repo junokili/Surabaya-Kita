@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3 class="center-align cyan-text text-accent-3 text-shadow">Join our community!</h3>
+<div class="row flashes">
+<h4 class="cyan accent-3 center-align white-text header-shadow">Join our community</h4> 
+</div>
 <p class="center-align">Signing up enables you to register interest in existing events and also to create your own unique events.</p>
 
 <div class="row">
@@ -13,7 +15,7 @@
 					<i class="fas fa-user-plus prefix cyan-text text-accent-3"></i>
 					<input id="username" name="username" type="text" class="validate"
                     minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-					<label for="username" class="cyan-text text-accent-3">  username</label>
+					<label for="username" class="cyan-text text-accent-3">  Username</label>
 				</div>
 			</div>
             <!-- password -->
@@ -22,10 +24,32 @@
                 <i class="fas fa-user-lock prefix cyan-text text-accent-3"></i>
 					<input id="password" name="password" type="password" class="validate"
                     minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-					<label for="password" class="cyan-text text-accent-3">  password</label>
+					<label for="password" class="cyan-text text-accent-3">  Password</label>
 				</div>
 			</div>
-            <!-- sign up new user -->
+            <!-- name -->
+			<div class="row">
+				<div class="input-field col s12">
+                <i class="fas fa-user prefix cyan-text text-accent-3"></i>
+					<input id="my_name" name="my_name" type="text" class="validate"
+                    minlength="5" maxlength="15" pattern="^[a-zA-Z]$" required>
+					<label for="my_name" class="cyan-text text-accent-3">  Name</label>
+				</div>
+			</div>
+            <!-- location -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-map prefix cyan-text text-accent-3"></i>
+    <select id="location" name="location" class="validate" required>
+      <option value="" disabled selected>Choose your area</option>
+      {% for location in locations %}
+        <option value="{{ location.location }}">{{ location.location }}</option>
+      {% endfor %}
+    </select>
+    <label for="location"> Your location</label>
+      </div>
+  </div>     
+  <!-- sign up new user -->
             <div class="row">
             <button type="submit" class="col s12 btn-large cyan accent-3">
             Sign Up <i class="fas fa-sign-in-alt"></i></button>

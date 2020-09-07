@@ -1,15 +1,47 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-{% for event in events %}
-{{ event.event_name }}<br>
-{{ event.event_description }}<br>
+<div class="row flashes">
+  <h4 class="cyan accent-3 center-align white-text header-shadow">
+    Check out the upcoming events here
+  </h4>
+</div>
+<div class="row">
+  {% for event in events %}
+  <div class="col s12 m3">
+    <div class="card">
+      <div class="card-image">
+        {% if event.category_name == "Cycle" %}
+        <img src="{{ url_for('static', filename='images/cycle.jpg') }}" />
+        <div class="event-category">Cycle</div>
+        {% else %} {% if event.category_name == "Coffee" %}
+        <img src="{{ url_for('static', filename='images/coffee.jpg') }}" />
+        <div class="event-category">Coffee</div>
+        {% endif %} {% endif %}
+      </div>
+      <div class="card-content">
+        <p class="event-description">{{ event.event_description }}</p>
+        <!--
 {{ event.location }}<br>
 {{ event.meet_point }}<br>
-{{ event.date_of_event }}<br>
-{{ event.time_of_event }}<br>
-{{ event.language }}<br>
-{{ event.free_event }}<br>
-{{ event.created_by }}<br>
-{% endfor %}
+{{ event.event_date }}<br>
+{{ event.event_time }}<br>
+      {% if event.paid_event == "off" %}
+      <p>Free event!</p> -->
+        <!-- <i class="fas fa-exclamation-circle cyan-text text-accent-2 tooltipped"
+          data-position="right" data-tooltip="Free!"></i> -->
+        <!-- {% else %}
+        <p>There is a charge for this event - see description</p> -->
+        <!--
+          <i class="fas fa-exclamation-circle cyan-text text-accent-2 tooltipped"
+          data-position="right" data-tooltip="There is a charge for this event. See details."></i>   -->
+        <!-- {% endif %}<br>
+{{ event.created_by }}<br> -->
+      </div>
+      <div class="event-title center-align">
+        <a class="event-link" href="#">{{ event.event_name }}</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}

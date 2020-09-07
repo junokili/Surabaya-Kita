@@ -66,17 +66,22 @@ def sign_up():
             flash("Username already exists")
             return redirect(url_for('sign_up'))
 
-        sign_up = {
+        user = {
             'username': request.form.get('username').lower(),
-            'password': generate_password_hash(request.form.get('password'))
+            'password': generate_password_hash(request.form.get('password')),
+            'location': request.form.get('location'),
+            'language': request.form.get('language')
         }
-        mongo.db.users.insert_one(sign_up)
+        mongo.db.users.insert_one(user)
 
         # add new user into session
         session['user'] = request.form.get('username').lower()
-        flash("Registration succesful")
+        flash("Great! You are now signed up")
         return redirect(url_for('my_profile', username=session['user']))
-    return render_template('sign_up.html')
+    locations = mongo.db.locations.find().sort('location', 1)
+    languages = mongo.db.languages.find().sort('language', 1)
+    return render_template('sign_up.html', locations=locations,
+                           languages=languages,)
 
 
 @app.route('/my_profile/<username>', methods=["GET", "POST"])
@@ -84,9 +89,11 @@ def my_profile(username):
     # get session username from database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    users = mongo.db.users.find()
 
     if session['user']:
-        return render_template('my_profile.html', username=username)
+        return render_template('my_profile.html',
+                               username=username, users=users)
 
     return redirect(url_for('login'))
 
@@ -146,17 +153,16 @@ def get_events():
 @app.route('/create_event', methods=["GET", "POST"])
 def create_event():
     if request.method == "POST":
-        free_event = "on" if request.form.get("free_event") else "off"
+        paid_event = "off" if request.form.get("paid_event") else "on"
         event = {
             "category_name": request.form.get("category_name"),
             "event_name": request.form.get("event_name"),
             "event_description": request.form.get("event_description"),
-            "free_event": free_event,
+            "paid_event": paid_event,
             "event_date": request.form.get("event_date"),
             "event_time": request.form.get("event_time"),
             "location": request.form.get("location"),
             "meet_point": request.form.get("meet_point"),
-            "language": request.form.get("language"),
             "created_by": session["user"],
         }
         mongo.db.events.insert_one(event)
@@ -165,20 +171,19 @@ def create_event():
 
     locations = mongo.db.locations.find().sort('location', 1)
     categories = mongo.db.categories.find().sort('category_name', 1)
-    languages = mongo.db.languages.find().sort('language', 1)
     return render_template('create_event.html', categories=categories,
-                           languages=languages, locations=locations)
+                           locations=locations)
 
 
 @app.route('/edit_event/<event_id>', methods=["GET", "POST"])
 def edit_event(event_id):
     if request.method == "POST":
-        free_event = "on" if request.form.get("free_event") else "off"
+        paid_event = "off" if request.form.get("paid_event") else "on"
         submit = {
             "category_name": request.form.get("category_name"),
             "event_name": request.form.get("event_name"),
             "event_description": request.form.get("event_description"),
-            "free_event": free_event,
+            "paid_event": paid_event,
             "event_date": request.form.get("event_date"),
             "created_by": session["user"],
         }

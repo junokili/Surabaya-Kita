@@ -1,11 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+
+body {
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
 p {
     padding: 10px 25px 10px;
     color: #808080;
 }
 
+.event-description {
+    padding: 0px;
+}
+
+.header-shadow {
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
+}
 
 .text-shadow {
-    text-shadow: 1px 1px #aaaaaa;)
+    text-shadow: 1px 1px #aaaaaa;
 }
 
 h3 {
@@ -54,13 +69,49 @@ h3 {
     margin-top: 25px;
 }
 
+.event-category {
+    background-color: #00e5ff ;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+}
+
+.event-title {
+    background-color: #b2ff59  !important;
+    margin: 0px;
+    padding: 20px;
+}
+
+.event-link {
+    color: white;
+    font-size: 24px;
+}
+
+/* modified materialize css */
+
+ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 .switch label input[type=checkbox]:checked+.lever {
   background-color: #84ffff;
 }
-
 .switch label input[type=checkbox]:checked+.lever:after {
   background-color: #00e5ff ;
 }
+.datepicker-date-display { background: #00e5ff; }
+.month-prev:hover { background: #00e5ff; }
+.month-next:hover { background: #00e5ff; }
+.is-today { color: #00e5ff !important; }
+.is-selected { background: #00e5ff !important; }
+.datepicker-done { color: #00e5ff !important;}
+.datepicker-cancel { color: #00e5ff !important;}
+.datepicker-clear { color: #64dd17   !important;}
+
+.timepicker-digital-display { background: #00e5ff !important; }
+.timepicker-close { color: #00e5ff !important;}
+.timepicker-clear { color: #64dd17   !important;}
+.timepicker-tick:hover { background: #00e5ff !important; }
+.timepicker-canvas line { stroke: #00e5ff !important; }
+.timepicker-canvas-bearing { fill: #00e5ff !important; }
+.timepicker-canvas-bg { fill: #00e5ff !important; }
 
 @media (max-width: 800px) {
 
