@@ -86,6 +86,68 @@ h3 {
     color: white;
     font-size: 24px;
 }
+/* footer */
+.page-footer {
+    background-color: #00e5ff;
+}
+.footer .fa {
+  margin-left: 20px;
+  margin-right: 4px;
+  font-size: 20px;
+  color: #fff;
+    transition-property: color;
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  -ms-transition-property: color;
+  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+}
+.footer .fa:hover {
+  color: #b2ff59;
+}
+.list-inline {
+  padding-left: 0;
+  margin-left: -5px;
+  list-style: none;
+}
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+ul.social > li > a > i {
+  margin: 15px;
+  font-size: 38px;
+  color: #fff;
+  transition-property: color;
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  -ms-transition-property: color;
+  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+}
+ul.social > li > a > i:hover {
+  color: #b2ff59;
+}
+
 
 /* modified materialize css */
 
