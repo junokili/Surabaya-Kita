@@ -18,31 +18,22 @@ p {
     -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
 }
-
 .text-shadow {
     text-shadow: 1px 1px #aaaaaa;
 }
-
-h3 {
-    text-shadow: 1px 1px #aaaaaa;
-}
-
 .white-text {
     color: white;
 }
-
 #sby-kita {
     font-size: 44px;
     margin-left: 20px;
     text-shadow: 2px 2px #aaaaaa;
 }
-
 .nav-extended {
     min-height: 85px;
     padding-top: 7px;
     margin-bottom: 10px;
 }
-
 #search-bar {
     max-height: 95px;
     padding-left: 40px;
@@ -76,19 +67,51 @@ h3 {
     text-align: center;
 }
 
-.event-title {
+.card-link-div {
     background-color: #b2ff59  !important;
     margin: 0px;
     padding: 20px;
 }
-
-.event-link {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
     color: white;
     font-size: 24px;
+    transition-property: color;
+   -webkit-transition-property: color 0.5s ease;
 }
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+    color: white;
+}
+.card-link-i {
+    margin-left: 5px;
+}
+#sgl-event-title {
+    padding: 20px;
+    margin-bottom: 0px;
+}
+#sgl-event-card {
+    margin-top: 0px;
+}
+.sgl-event {
+    margin: 5px;
+}
+.card .card-content {
+    padding: 10px;
+}
+.card-link-div a {
+    color: #fff;
+    font-size: 24px;
+}
+#event-deets {
+    font-size: 18px;
+}
+
 /* footer */
 .page-footer {
     background-color: #00e5ff;
+}
+
+.right-border {
+    border-right: 2px solid white;
 }
 .footer .fa {
   margin-left: 20px;
@@ -175,9 +198,19 @@ ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 .timepicker-canvas-bearing { fill: #00e5ff !important; }
 .timepicker-canvas-bg { fill: #00e5ff !important; }
 
-@media (max-width: 800px) {
+@media (max-width: 765px) {
 
 #sby-kita {
-    margin-left: 0px;
+    margin-left: -40px;
+    margin-right: -20px;
+    font-size: 32px;
+    text-align: left;
 }
+.bottom-border {
+    border-bottom: 2px solid #fff;
+}
+.right-border {
+    border-right: 0px;
+}
+
 }

@@ -37,8 +37,10 @@
         <!-- {% endif %}<br>
 {{ event.created_by }}<br> -->
       </div>
-      <div class="event-title center-align">
-        <a class="event-link" href="#">{{ event.event_name }}</a>
+      <div class="card-link-div center-align">
+        <a class="card-link" href="{{ url_for('single_event', event_id=event._id) }}">{{ event.event_name }}
+        <i class="fas fa-plus prefix white-text tooltipped" id="event-deets"
+                data-position="right" data-tooltip="Get Details"></i></a>
       </div>
     </div>
   </div>

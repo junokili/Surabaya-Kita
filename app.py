@@ -89,11 +89,10 @@ def my_profile(username):
     # get session username from database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    users = mongo.db.users.find()
 
     if session['user']:
         return render_template('my_profile.html',
-                               username=username, users=users)
+                               username=username)
 
     return redirect(url_for('login'))
 
@@ -201,6 +200,13 @@ def delete_event(event_id):
     mongo.db.events.remove({"_id": ObjectId(event_id)})
     flash("Event deleted")
     return redirect(url_for('get_events'))
+
+
+@app.route('/single_event/<event_id>')
+def single_event(event_id):
+    event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
+    return render_template('single_event.html',
+                           event=event)
 
 
 @app.route('/contact_us')
