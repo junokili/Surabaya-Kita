@@ -82,7 +82,10 @@ p {
     color: white;
 }
 .card-link-i {
-    margin-left: 5px;
+    margin-left: 50px;
+}
+.card .card-content .card-title {
+    margin-bottom: 0px;
 }
 #sgl-event-title {
     padding: 20px;
@@ -95,16 +98,25 @@ p {
     margin: 5px;
 }
 .card .card-content {
-    padding: 10px;
+    padding: 20px;
 }
 .card-link-div a {
     color: #fff;
     font-size: 24px;
 }
-#event-deets {
-    font-size: 18px;
+.card .card-content .card-title i {
+    font-size:18px;
+    margin-left: 15px;
 }
-
+.card .card-content .card-title {
+    color: white;
+}
+.card .card-reveal {
+    padding: 0px;
+}
+.card .card-reveal .card-title {
+    color: white;
+}
 /* footer */
 .page-footer {
     background-color: #00e5ff;
