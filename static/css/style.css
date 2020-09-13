@@ -59,7 +59,23 @@ p {
 .all-events-button {
     margin-top: 25px;
 }
-
+.flex {
+    display: flex;
+}
+div#map {
+  min-height: 360px;
+  max-width: 700px;
+  margin: 10px 25px 20px;
+  }
+div#cafe {
+  min-height: 360px;
+  max-width: 700px;
+  margin: 10px 25px 20px;
+  background-image: url('cafe.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .event-category {
     background-color: #00e5ff ;
     color: white;
@@ -118,71 +134,49 @@ p {
     color: white;
 }
 /* footer */
+.fixed {
+    min-height: 250px;
+}
 .page-footer {
     background-color: #00e5ff;
 }
-
 .right-border {
     border-right: 2px solid white;
 }
-.footer .fa {
-  margin-left: 20px;
-  margin-right: 4px;
-  font-size: 20px;
-  color: #fff;
-    transition-property: color;
-  -webkit-transition-property: color;
-  -moz-transition-property: color;
-  -o-transition-property: color;
-  -ms-transition-property: color;
-  transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  -ms-transition-duration: 0.5s;
-  transition-timing-function: ease-in-out;
-  -webkit-transition-timing-function: ease-in-out;
-  -moz-transition-timing-function: ease-in-out;
-  -o-transition-timing-function: ease-in-out;
-  -ms-transition-timing-function: ease-in-out;
+#mini-map {
+    max-width: 250px;
 }
-.footer .fa:hover {
-  color: #b2ff59;
+.footer .fa {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 4px;
+    font-size: 28px;
+    color: #fff;
+}
+.info-text-top {
+    margin-top: 20px;
+    font-size: 22px;
+}
+.info-text {
+    margin-top: -10px;
+    font-size: 22px;
 }
 .list-inline {
-  padding-left: 0;
-  margin-left: -5px;
-  list-style: none;
+    margin-top: 50px;
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
 }
 .list-inline > li {
-  display: inline-block;
-  padding-right: 5px;
-  padding-left: 5px;
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 ul.social > li > a > i {
-  margin: 15px;
-  font-size: 38px;
-  color: #fff;
-  transition-property: color;
-  -webkit-transition-property: color;
-  -moz-transition-property: color;
-  -o-transition-property: color;
-  -ms-transition-property: color;
-  transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  -ms-transition-duration: 0.5s;
-  transition-timing-function: ease-in-out;
-  -webkit-transition-timing-function: ease-in-out;
-  -moz-transition-timing-function: ease-in-out;
-  -o-transition-timing-function: ease-in-out;
-  -ms-transition-timing-function: ease-in-out;
+    margin: 15px;
+    font-size: 52px;
+    color: #fff;
 }
-ul.social > li > a > i:hover {
-  color: #b2ff59;
-}
-
 
 /* modified materialize css */
 
@@ -224,5 +218,12 @@ ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 .right-border {
     border-right: 0px;
 }
-
+.info-text-top {
+    margin-top: 20px;
+    font-size: 18px;
+}
+.info-text {
+    margin-top: -10px;
+    font-size: 18px;
+}
 }

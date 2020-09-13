@@ -68,32 +68,139 @@
 
 
 <!-- info about site -->
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>This is the place to check out local events in Surabaya. Take a look at what is happening, or 
+<a href="{{ url_for('create_event') }}" class="cyan-text text-accent-3">create your own event</a> 
+and share it with the community. <br>
+<br>
+Not sure where to hold your event? You're welcome to hold your event in our 
+<a href="#cafe" class="cyan-text text-accent-3">very, own cafe</a>, a friendly, relaxed place to hang out and chat. <br>
+<br>
+If you want to hold a workshop or a larger gathering
+then please <a href="{{ url_for('contact_us') }}" class="cyan-text text-accent-3">contact us</a> 
+about our dedicated space in the cafe. If you wish to book the space we can also offer you and your 
+group discounted food and drink.</p>
  
-
+<div class="row flashes">
+<h4 class="cyan accent-3 center-align white-text header-shadow">Monthly Events at Surabaya Kita Cafe</h4> 
+</div>
+<p>The following events are organised by Surabaya Kita and are held every month in Surabaya Kita Cafe. </p>
+<div class="row">
+  {% for event in events %}
+  {% if event.created_by == "admin" %}
+  <div class="col s12 m3">
+    <div class="card">
+      <div class="card-image">
+        {% if event.category_name == "Cycle" %}
+        <img src="{{ url_for('static', filename='images/cycle.jpg') }}" />
+        <div class="event-category">Cycle</div>
+        {% else %} {% if event.category_name == "Coffee" %}
+        <img src="{{ url_for('static', filename='images/coffee.jpg') }}" />
+        <div class="event-category">Coffee</div>
+        {% else %} {% if event.category_name == "Walk" %}
+        <img src="{{ url_for('static', filename='images/walk.jpg') }}" />
+        <div class="event-category">Walk</div>
+        {% else %} {% if event.category_name == "Market" %}
+        <img src="{{ url_for('static', filename='images/market.jpg') }}" />
+        <div class="event-category">Market</div>
+        {% else %} {% if event.category_name == "Social" %}
+        <img src="{{ url_for('static', filename='images/social.jpg') }}" />
+        <div class="event-category">Social</div>
+        {% else %} {% if event.category_name == "Workshop" %}
+        <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
+        <div class="event-category">Workshop</div>
+        {% else %} {% if event.category_name == "Book Club" %}
+        <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+        <div class="event-category">Bookclub</div>
+        {% endif %}
+        {% endif %}
+        {% endif %} {% endif %}
+        {% endif %} {% endif %}{% endif %}
+      </div>
+      <div class="card-content">
+        <p class="event-description">{{ event.event_description }}</p>
+      </div>
+      <div class="card-content card-link-div center-align">
+      <span class="card-title activator">{{ event.event_name }}
+      <i class="fas fa-plus prefix white-text tooltipped" id="event-deets"
+                data-position="right" data-tooltip="Get Details"></i></span>
+    </div>
+      <div class="card-reveal">
+      <span class="card-title card-link-div center-align">{{ event.event_name }}
+      <i class="fas fa-times prefix white-text tooltipped right" id="event-deets-close"
+                data-position="right" data-tooltip="Close Details"></i></span>
+<p><i class="fas fa-list-ul prefix cyan-text text-accent-3 tooltipped sgl-event"
+                data-position="right" data-tooltip="Event Category"></i>
+                {{ event.category_name }}<br>
+                <i class="fas fa-edit prefix cyan-text text-accent-3 tooltipped sgl-event"
+                data-position="right" data-tooltip="Event Description"></i>
+                {{ event.event_description }}<br>
+                <i class="fas fa-map prefix cyan-text text-accent-3 tooltipped sgl-event"
+                data-position="right" data-tooltip="Event Location"></i>
+                {{ event.location }}<br>
+                <i class="fas fa-map-marker-alt prefix cyan-text text-accent-3 tooltipped sgl-event"
+                data-position="right" data-tooltip="Meet Point"></i>
+                {{ event.meet_point }}<br>
+                <i class="fas fa-calendar-alt prefix cyan-text text-accent-3 tooltipped sgl-event"
+                data-position="right" data-tooltip="Date of Event"></i>
+                {{ event.event_date }}<br>
+                <i class="fas fa-clock prefix cyan-text text-accent-3 tooltipped sgl-event"
+                data-position="right" data-tooltip="Time of Event"></i>
+                {{ event.event_time }}<br>
+                    {% if event.paid_event == "off" %}
+                    <i class="fas fa-comment-dollar cyan-text text-accent-3 tooltipped sgl-event"
+                     data-position="right" data-tooltip="Free!"></i>
+                    Free event!<br>
+                    {% else %}
+                    <i class="fas fa-comment-dollar cyan-text text-accent-3 tooltipped sgl-event"
+                     data-position="right" data-tooltip="Not Free"></i> 
+                    There is a charge for this event - see description<br>
+                    {% endif %}
+                <i class="fas fa-user prefix cyan-text text-accent-3 tooltipped sgl-event"
+                data-position="right" data-tooltip="Created by user"></i>
+                {{ event.created_by }}<br></p>    </div>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
 <div class="row all-events-button">
         <div class="col s12 center-align">
           <a href="{{ url_for('get_events') }}" class="btn-large light-green accent-2 all-events-button">
-        Click here to see all events<i class="fas fa-calendar-alt right"></i></a>
+        All Events<i class="fas fa-calendar-alt right"></i></a>
         </div>
+</div>
+
+<div class="row flashes">
+<a name="cafe"></a>
+<h4 class="cyan accent-3 center-align white-text header-shadow">Surabaya Kita Cafe</h4> 
+</div>
+<div class="row center-align">
+<div class="col s12 l6 ">
+<div id="map" class="card"></div>
+</div>
+<div class="col s12 l6">
+<div id="cafe" class="card"></div>
+</div>
 </div>
     {% endblock %}
 <!-- footer -->
       <footer class="page-footer">
-        <div class="row ">
-          <div class="col s12 m4 center-align footer">
-            <div class="fixed">
-              <h4>Surabaya Kita Cafe</h4>
-              <i class="fa fa-coffee"></i>
-            </div>
-          </div>
-          <div class="col s12 m4 center-align footer">
+        <div class="row">
+        <div class="col s12 m4 center-align footer bottom-border right-border">
             <div class="fixed">
               <h4 class="white-text">Contact Us</h4>
-              <p class="white-text"><i class="fa fa-phone"></i> 085 777 7777</p>
-              <p class="white-text">
+              <p class="white-text info-text-top"><i class="fa fa-phone"></i> 085 777 7777</p>
+              <p class="white-text info-text">
                 <i class="fa fa-envelope"></i> info@surabayakita.com
               </p>
+            </div>
+          </div>
+          <div class="col s12 m4 center-align footer bottom-border right-border">
+            <div class="fixed">
+              <h4>Surabaya Kita Cafe</h4>
+                <div>
+                <img src="{{ url_for('static', filename='images/map.jpg') }}" id="mini-map">
+                </div>
             </div>
           </div>
           <div class="col s12 m4 center-align">
@@ -101,19 +208,19 @@
               <h4 class="white-text">Social Media</h4>
               <ul class="white-text social list-inline">
                 <li class="">
-                  <a href="images/coming-soon.jpg" target="_blank">
+                  <a href="static/images/coming-soon.jpg" target="_blank">
                     <i class="fab fa-facebook-square" aria-hidden="true"></i>
                     <span class="sr-only">Facebook </span>
                   </a>
                 </li>
                 <li class="#">
-                  <a href="images/coming-soon.jpg" target="_blank">
+                  <a href="static/images/coming-soon.jpg" target="_blank">
                     <i class="fab fa-instagram" aria-hidden="true"></i>
                     <span class="sr-only">Instagram</span>
                   </a>
                 </li>
                 <li class="#">
-                  <a href="images/coming-soon.jpg" target="_blank">
+                  <a href="static/images/coming-soon.jpg" target="_blank">
                     <i class="fab fa-linkedin" aria-hidden="true"></i>
                     <span class="sr-only">Linked In</span>
                   </a>
@@ -132,5 +239,12 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclustererplus@4.0.1.min.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7q25_CcuaXX7I2tSXB8VId8XLzcLrB98&callback=initMap"
+    ></script>
+    <script src="{{ url_for('static', filename='js/google-maps.js') }}"></script>
 </body>
 </html>
