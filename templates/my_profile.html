@@ -1,17 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+<div class="row flashes">
+<h4 class="cyan accent-3 center-align white-text header-shadow">{{ username }}'s Profile</h4> 
+</div>
+{% for user in users %}
+{% if session.user == user.username %}
 <div class="row">
 	<div class="col s12 m8 offset-m2">
 		<div class="card-panel">
-        <h3 class="center-align cyan-text text-accent-3">
-        {{ username }}'s Profile</h3>
-        {{ username }}<br>
-        {{ my_name }}<br>
+            <p><i class="fas fa-user prefix cyan-text text-accent-3 tooltipped sgl-event"
+                data-position="right" data-tooltip="Name"></i>
+            {{ user.my_name }}<br>
+            <i class="fas fa-map prefix cyan-text text-accent-3 tooltipped sgl-event"
+                data-position="right" data-tooltip="Location"> </i>  
+            {{ user.location }}<br>
+            </p>
+            <!-- edit button -->
+<div class="row all-events-button">
+        <div class="col s12 center-align">
+          <a href="{{ url_for('edit_profile', username=user.username) }}" class="btn-large light-green accent-2 all-events-button">
+        Edit Profile<i class="fas fa-edit right"></i></a>
+        </div>
+</div>
 		</div>
 	</div>
 </div>
-
+{% endif %}
+{% endfor %}
 
 {% endblock %}

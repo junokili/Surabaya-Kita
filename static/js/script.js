@@ -21,6 +21,10 @@ $(document).ready(function(){
             done: "OK"
         }
     });
+    $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+  });
     validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50"};

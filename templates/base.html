@@ -21,6 +21,7 @@
         <li><a class="active" href="{{ url_for('get_events') }}">Events</a></li>
         {% if session.user %}   
         <li class="tab"><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
+        <li><a href="{{ url_for('my_events', username=session['user']) }}">My Events</a></li>
         <li class="tab"><a href="{{ url_for('create_event') }}">Create Event</a></li>
             {% if session.user |lower == "admin"|lower %}
         <li class="tab"><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
@@ -40,6 +41,7 @@
         <li><a href="{{ url_for('get_events') }}">Events</a></li>
         {% if session.user %}
         <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
+        <li><a href="{{ url_for('my_events', username=session['user']) }}">My Events</a></li>
         <li><a href="{{ url_for('create_event') }}">Create Event</a></li>
         {% if session.user |lower == "admin"|lower %}
         <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
@@ -70,7 +72,9 @@
 <!-- info about site -->
 <p>This is the place to check out local events in Surabaya. Take a look at what is happening, or 
 <a href="{{ url_for('create_event') }}" class="cyan-text text-accent-3">create your own event</a> 
-and share it with the community. <br>
+and share it with the community. You have to <a href="{{ url_for('login') }}" class="cyan-text text-accent-3">login</a> to create an event, 
+so if you haven't already registered 
+you can do that <a href="{{ url_for('sign_up') }}" class="cyan-text text-accent-3">here.</a><br>
 <br>
 Not sure where to hold your event? You're welcome to hold your event in our 
 <a href="#cafe" class="cyan-text text-accent-3">very, own cafe</a>, a friendly, relaxed place to hang out and chat. <br>
@@ -175,11 +179,23 @@ group discounted food and drink.</p>
 <h4 class="cyan accent-3 center-align white-text header-shadow">Surabaya Kita Cafe</h4> 
 </div>
 <div class="row center-align">
+  <div class="carousel carousel-slider">
+    <a class="carousel-item" href="#one!"><img src="{{ url_for('static', filename='css/cafe.jpg') }}"></a>
+    <a class="carousel-item" href="#two!"><img src="{{ url_for('static', filename='images/coffee.jpg') }}"></a>
+    <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
+    <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
+    <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
+  </div>
+<!-- <div class="col s12 l6">
+<div id="cafe" class="card"></div>
+</div> -->
+<div class="col s12 l6 ">
+<div class="card">
+
+</div>
+</div>
 <div class="col s12 l6 ">
 <div id="map" class="card"></div>
-</div>
-<div class="col s12 l6">
-<div id="cafe" class="card"></div>
 </div>
 </div>
     {% endblock %}
@@ -246,5 +262,13 @@ group discounted food and drink.</p>
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7q25_CcuaXX7I2tSXB8VId8XLzcLrB98&callback=initMap"
     ></script>
     <script src="{{ url_for('static', filename='js/google-maps.js') }}"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("user_O4p1uzoCxjXWmUYNVNa1Y");
+   })();
+</script>
 </body>
 </html>
