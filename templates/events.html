@@ -12,34 +12,45 @@
       <div class="card-image">
         {% if event.category_name == "Cycle" %}
         <img src="{{ url_for('static', filename='images/cycle.jpg') }}" />
-        <div class="event-category">Cycle</div>
         {% else %} {% if event.category_name == "Coffee" %}
         <img src="{{ url_for('static', filename='images/coffee.jpg') }}" />
-        <div class="event-category">Coffee</div>
         {% else %} {% if event.category_name == "Walk" %}
         <img src="{{ url_for('static', filename='images/walk.jpg') }}" />
-        <div class="event-category">Walk</div>
         {% else %} {% if event.category_name == "Market" %}
         <img src="{{ url_for('static', filename='images/market.jpg') }}" />
-        <div class="event-category">Market</div>
         {% else %} {% if event.category_name == "Social" %}
         <img src="{{ url_for('static', filename='images/social.jpg') }}" />
-        <div class="event-category">Social</div>
         {% else %} {% if event.category_name == "Workshop" %}
         <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
-        <div class="event-category">Workshop</div>
         {% else %} {% if event.category_name == "Book Club" %}
         <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
-        <div class="event-category">Bookclub</div>
         {% endif %}
         {% endif %}
         {% endif %} {% endif %}
         {% endif %} {% endif %}{% endif %}
       </div>
-      <div class="card-content">
+        {% if event.category_name == "Cycle" %}
+        <div class="event-category">Cycle</div>
+        {% else %} {% if event.category_name == "Coffee" %}
+        <div class="event-category">Coffee</div>
+        {% else %} {% if event.category_name == "Walk" %}
+        <div class="event-category">Walk</div>
+        {% else %} {% if event.category_name == "Market" %}
+        <div class="event-category">Market</div>
+        {% else %} {% if event.category_name == "Social" %}
+        <div class="event-category">Social</div>
+        {% else %} {% if event.category_name == "Workshop" %}
+        <div class="event-category">Workshop</div>
+        {% else %} {% if event.category_name == "Book Club" %}
+        <div class="event-category">Bookclub</div>
+        {% endif %}
+        {% endif %}
+        {% endif %} {% endif %}
+        {% endif %} {% endif %}{% endif %}
+      <div class="card-content valign-wrapper center-align">
         <p class="event-description">{{ event.event_description }}</p>
       </div>
-      <div class="card-content card-link-div center-align">
+      <div class="card-content card-link-div center-align valign-wrapper">
       <span class="card-title activator">{{ event.event_name }}
       <i class="fas fa-plus prefix white-text tooltipped" id="event-deets"
                 data-position="right" data-tooltip="Get Details"></i></span>

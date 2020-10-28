@@ -3,16 +3,13 @@
 body {
     font-family: 'Kumbh Sans', sans-serif;
 }
-
 p {
     padding: 10px 25px 10px;
     color: #808080;
 }
-
 .event-description {
     padding: 0px;
 }
-
 .header-shadow {
     -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
@@ -82,12 +79,6 @@ div#cafe {
     font-size: 24px;
     text-align: center;
 }
-
-.card-link-div {
-    background-color: #b2ff59  !important;
-    margin: 0px;
-    padding: 20px;
-}
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
     color: white;
     font-size: 24px;
@@ -114,7 +105,17 @@ div#cafe {
     margin: 5px;
 }
 .card .card-content {
-    padding: 20px;
+    padding: 10px;
+    height: 110px;
+}
+.card .card-content p {
+    padding: 10px 0px;
+    overflow: hidden;
+}
+.card-link-div {
+    background-color: #b2ff59  !important;
+    margin: 0px;
+    height: 100px !important;
 }
 .card-link-div a {
     color: #fff;
