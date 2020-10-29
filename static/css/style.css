@@ -133,6 +133,17 @@ div#cafe {
 }
 .card .card-reveal .card-title {
     color: white;
+    padding-top: 15px;
+}
+.card .card-reveal i {
+    color: white;
+    margin: 0px 15px;
+}
+.card .card-reveal p {
+    text-align: left;
+}
+.func-button {
+    margin: 10px;
 }
 /* footer */
 .fixed {

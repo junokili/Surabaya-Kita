@@ -92,10 +92,46 @@ def my_profile(username):
         {"username": session["user"]})["username"]
 
     if session['user']:
+        users = mongo.db.users.find()
         return render_template('my_profile.html',
-                               username=username)
+                               username=username, users=users)
 
     return redirect(url_for('login'))
+
+
+@app.route('/my_events/<username>', methods=["GET", "POST"])
+def my_events(username):
+    # get session username from database
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session['user']:
+        events = mongo.db.events.find()
+        return render_template('my_events.html',
+                               username=username, events=events)
+
+
+# @app.route('/edit_profile/<username>', methods=["GET", "POST"])
+# def edit_profile(username):
+    # get session username from database
+#    username = mongo.db.users.find_one(
+#        {"username": session["user"]})["username"]
+
+#    if session['user']:
+#        if request.method == "POST":
+#            submit = {
+#                'username': request.form.get('username'),
+#                'password': request.form.get('password'),
+#                'my_name': request.form.get('my_name'),
+#                'location': request.form.get('location')
+#            }
+#            mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
+#            flash("Profile updated!")
+#            return redirect(url_for('my_profile'))
+#        user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+#        locations = mongo.db.locations.find().sort('location', 1)
+#        return render_template('edit_profile.html', user=user,
+#                               locations=locations, username=username)
 
 
 @app.route('/logout')
@@ -153,12 +189,12 @@ def get_events():
 @app.route('/create_event', methods=["GET", "POST"])
 def create_event():
     if request.method == "POST":
-        paid_event = "off" if request.form.get("paid_event") else "on"
+        free_event = "off" if request.form.get("free_event") else "on"
         event = {
             "category_name": request.form.get("category_name"),
             "event_name": request.form.get("event_name"),
             "event_description": request.form.get("event_description"),
-            "paid_event": paid_event,
+            "free_event": free_event,
             "event_date": request.form.get("event_date"),
             "event_time": request.form.get("event_time"),
             "location": request.form.get("location"),
@@ -167,7 +203,7 @@ def create_event():
         }
         mongo.db.events.insert_one(event)
         flash("New event created!")
-        return redirect(url_for('get_events'))
+        return redirect(url_for('my_events'))
 
     locations = mongo.db.locations.find().sort('location', 1)
     categories = mongo.db.categories.find().sort('category_name', 1)
@@ -178,29 +214,51 @@ def create_event():
 @app.route('/edit_event/<event_id>', methods=["GET", "POST"])
 def edit_event(event_id):
     if request.method == "POST":
-        paid_event = "off" if request.form.get("paid_event") else "on"
+        free_event = "off" if request.form.get("free_event") else "on"
         submit = {
             "category_name": request.form.get("category_name"),
             "event_name": request.form.get("event_name"),
             "event_description": request.form.get("event_description"),
-            "paid_event": paid_event,
+            "free_event": free_event,
             "event_date": request.form.get("event_date"),
+            "event_time": request.form.get("event_time"),
+            "location": request.form.get("location"),
+            "meet_point": request.form.get("meet_point"),
             "created_by": session["user"],
         }
         mongo.db.events.update({"_id": ObjectId(event_id)}, submit)
         flash("Event updated!")
 
+        # get session username from database
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
+        if session['user']:
+            events = mongo.db.events.find()
+            return render_template('my_events.html',
+                                   username=username, events=events)
+
     event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
+    locations = mongo.db.locations.find().sort('location', 1)
     categories = mongo.db.categories.find().sort('category_name', 1)
+
     return render_template('edit_event.html',
-                           event=event, categories=categories)
+                           event=event, categories=categories,
+                           locations=locations)
 
 
 @app.route('/delete_event/<event_id>')
 def delete_event(event_id):
     mongo.db.events.remove({"_id": ObjectId(event_id)})
     flash("Event deleted")
-    return redirect(url_for('get_events'))
+    # get session username from database
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session['user']:
+        events = mongo.db.events.find()
+        return render_template('my_events.html',
+                               username=username, events=events)
 
 
 @app.route('/single_event/<event_id>')

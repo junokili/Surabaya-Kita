@@ -3,6 +3,7 @@
 <div class="row flashes">
 <h4 class="cyan accent-3 center-align white-text header-shadow">Create your own event</h4> 
 </div>
+{% if session.user %}   
 <p>Fill in the form below to add your own event. Please fill in necessary additional details 
 in the event description, including any event fees or requirements and e.g distance / duration and pace for a bike ride or walk.
 If you don't think we have the right category yet for your event then please 
@@ -84,18 +85,18 @@ and we'll see what we can do! </p>
       </div>
       </div>
         <!-- Switch -->
-                   <div class="row">
+    <div class="row">
         <div class="input-field col s12">
         <div class="switch">
                   <i class="fas fa-comment-dollar prefix cyan-text text-accent-3"></i>
-                  <label for="paid_event">
-            <input type="checkbox" id="paid_event" name="paid_event">
+                  <label for="free_event">
+            <input type="checkbox" id="free_event" name="free_event">
             <span class="lever"></span>
              Select if there is a fee for this event. Please include fee in event description.
             </label>
         </div>
-        </div>
-                   </div>
+    </div>
+    </div>
         <!-- submit button -->
         <div class="row">
         <div class="col s12 center-align">
@@ -109,4 +110,9 @@ and we'll see what we can do! </p>
   </div>
   </div>
 </div>
+{% endif %}
+<p class="center-align">
+You have to <a href="{{ url_for('login') }}" class="cyan-text text-accent-3">login</a> to create an event.<br> 
+If you haven't already registered, 
+you can do that <a href="{{ url_for('sign_up') }}" class="cyan-text text-accent-3">here.</a><br></p>
 {% endblock %}

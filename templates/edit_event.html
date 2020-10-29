@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-<h3 class="cyan-text text-accent-3 center-align">Edit Task</h3>
-  <div class="card-panel grey lighten-5">
+<div class="row flashes">
+<h4 class="cyan accent-3 center-align white-text header-shadow">Edit Event</h4> 
+</div> 
+<div class="container">
+<div class="card-panel grey lighten-5">
   <div class="row">
     <form class="col s12" method="POST" action="{{ url_for('edit_event', event_id=event._id) }}">
     <!-- event category -->
@@ -39,25 +42,60 @@
           <label for="event_description">Event Description</label>
       </div>
       </div>
-<!-- due date -->
+<!-- event date -->
            <div class="row">
         <div class="input-field col s12">
           <i class="fas fa-calendar-alt prefix cyan-text text-accent-3"></i>
-          <input id="due_date" name="due_date" type="text" class="datepicker validate"
+          <input id="event_date" name="event_date" type="text" class="datepicker validate"
           value="{{- event.event_date -}}" required>
-          <label for="due_date">Date of Event</label>
+          <label for="event_date">Date of Event</label>
         </div>
       </div>
-      <div class="row">
+      <!-- event time -->
+           <div class="row">
+        <div class="input-field col s12">
+          <i class="fas fa-clock prefix cyan-text text-accent-3"></i>
+          <input id="event_time" name="event_time" type="text" class="timepicker validate"
+          value="{{- event.event_time -}}" required>
+          <label for="event_time">Time of Event</label>
+        </div>
+      </div>
+      <!-- event location -->
+    <div class="row">
       <div class="input-field col s12">
+        <i class="fas fa-map prefix cyan-text text-accent-3"></i>
+    <select id="location" name="location" class="validate" required>
+      <option value="" disabled selected>Choose event area</option>
+      {% for location in locations %}
+      {% if location.location == event.location %}
+        <option value="{{ location.location }}" selected>{{ location.location }}</option>
+      {% else %}
+        <option value="{{ location.location }}" >{{ location.location }}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+    <label for="location">Event Area</label>
+      </div>
+  </div>
+      <!-- event meet point -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="fas fa-map-marker-alt prefix cyan-text text-accent-3"></i>
+          <textarea id="meet_point" name="meet_point" class="materialize-textarea validate" 
+          minlength="5" maxlength="50" value="{{ event.meet_point }}"  required></textarea>
+          <label for="meet_point">Meet Point</label>
+      </div>
+      </div>
         <!-- Switch -->
+              <div class="row">
+      <div class="input-field col s12">
         <div class="switch">
-                  <i class="fas fa-exclamation-circle prefix cyan-text text-accent-3"></i>
-            <label for="free_event">
+                  <i class="fas fa-comment-dollar prefix cyan-text text-accent-3"></i>
+            <label for="paid_event">
             {% if event.free_event == "on" %}
-            <input type="checkbox" id="free_event" name="free_event" checked>
+            <input type="checkbox" id="paid_event" name="paid_event" checked>
             {% else %}
-            <input type="checkbox" id="free_event" name="free_event">
+            <input type="checkbox" id="paid_event" name="paid_event">
             {% endif %}
             <span class="lever"></span>
             Free Event
@@ -66,17 +104,19 @@
         <!-- submit button -->
         <div class="row">
         <div class="col s12 center-align">
-          <button class="btn-large light-green accent-2 text-shadow" type="submit">
-          Update Task
+          <button class="btn-large cyan accent-4 text-shadow" type="submit">
+          Update 
     <i class="fas fa-edit right"></i>
-    <a href="{{ url_for('get_events') }}" class="btn-large light-green accent-4 text-shadow">
+    </button>
+    <a href="{{ url_for('my_events', username=session['user']) }}" class="btn-large light-green accent-4 text-shadow">
         Cancel<i class="fas fa-times-circle right"></i></a>
-  </button>
+  
         </div>
         </div>
       </div>
       </div>   
     </form>
   </div>
-
+  </div>
+  </div> 
 {% endblock %}
