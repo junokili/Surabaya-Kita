@@ -62,16 +62,16 @@ def sign_up():
     if request.method == 'POST':
         # check if user already exists
         existing_user = mongo.db.users.find_one(
-            {'username': request.form.get('username').lower()})
+            {'username': request.form.get('username')})
         if existing_user:
             flash("Username already exists")
             return redirect(url_for('sign_up'))
 
         user = {
-            'username': request.form.get('username').lower(),
+            'username': request.form.get('username'),
             'password': generate_password_hash(request.form.get('password')),
+            'my_name': request.form.get('my_name'),
             'location': request.form.get('location'),
-            'language': request.form.get('language')
         }
         mongo.db.users.insert_one(user)
 
@@ -80,9 +80,7 @@ def sign_up():
         flash("Great! You are now signed up")
         return redirect(url_for('my_profile', username=session['user']))
     locations = mongo.db.locations.find().sort('location', 1)
-    languages = mongo.db.languages.find().sort('language', 1)
-    return render_template('sign_up.html', locations=locations,
-                           languages=languages,)
+    return render_template('sign_up.html', locations=locations)
 
 
 @app.route('/my_profile/<username>', methods=["GET", "POST"])
@@ -111,27 +109,22 @@ def my_events(username):
                                username=username, events=events)
 
 
-# @app.route('/edit_profile/<username>', methods=["GET", "POST"])
-# def edit_profile(username):
-    # get session username from database
-#    username = mongo.db.users.find_one(
-#        {"username": session["user"]})["username"]
+@app.route('/edit_profile/<user_id>', methods=["GET", "POST"])
+def edit_profile(user_id):
+    if request.method == "POST":
+        submit = {
+            'username': request.form.get('username'),
+            'my_name': request.form.get('my_name'),
+            'location': request.form.get('location')
+        }
+        mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
+        flash("Profile updated!")
+        return redirect(url_for('my_profile'))
 
-#    if session['user']:
-#        if request.method == "POST":
-#            submit = {
-#                'username': request.form.get('username'),
-#                'password': request.form.get('password'),
-#                'my_name': request.form.get('my_name'),
-#                'location': request.form.get('location')
-#            }
-#            mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
-#            flash("Profile updated!")
-#            return redirect(url_for('my_profile'))
-#        user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
-#        locations = mongo.db.locations.find().sort('location', 1)
-#        return render_template('edit_profile.html', user=user,
-#                               locations=locations, username=username)
+    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+    locations = mongo.db.locations.find().sort('location', 1)
+    return render_template('edit_profile.html', user=user,
+                           locations=locations)
 
 
 @app.route('/logout')

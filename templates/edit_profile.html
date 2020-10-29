@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row flashes">
+<h4 class="cyan accent-3 center-align white-text header-shadow">Edit Profile</h4> 
+</div>
+<p class="center-align">Update your profile.</p>
+<div class="row">
+	<form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('edit_profile', user_id=user._id) }}">
+		<div class="card-panel">
+        <!-- username -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="fas fa-user-plus prefix cyan-text text-accent-3"></i>
+					<input id="username" name="username" type="text" class="validate"
+                    minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" value="{{ user.username }}" required>
+					<label for="username" class="cyan-text text-accent-3">  Username</label>
+				</div>
+			</div>
+            <!-- name -->
+			<div class="row">
+				<div class="input-field col s12">
+                <i class="fas fa-user prefix cyan-text text-accent-3"></i>
+					<input id="my_name" name="my_name" type="text" class="validate"
+                    minlength="5" maxlength="50" pattern="^[a-zA-Z0-9 ]{5,15}$" value="{{ user.my_name }}" required>
+					<label for="my_name" class="cyan-text text-accent-3">  Name</label>
+				</div>
+			</div>
+            <!-- location -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-map prefix cyan-text text-accent-3"></i>
+    <select id="" name="location" class="validate" required>
+      {% for location in locations %}
+      {% if location.location == user.location %}
+        <option value="{{ location.location }}" selected>{{ location.location }}</option>
+      {% else %}
+        <option value="{{ location.location }}" >{{ location.location }}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+    <label for="location"> Your location</label>
+      </div>
+  </div>     
+  <!-- update profile -->
+            <div class="row">
+            <button type="submit" class="col s12 btn-large cyan accent-3">
+            Update Profile <i class="fas fa-sign-in-alt"></i></button>
+            <a href="{{ url_for('my_profile', username=session['user']) }}" class="btn-large light-green accent-4 text-shadow">
+            Cancel<i class="fas fa-times-circle right"></i></a>
+            </div>
+		</div>
+	</form>
+</div>
+
+{% endblock %}
