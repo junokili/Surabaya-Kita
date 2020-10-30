@@ -43,7 +43,9 @@ p {
 .btn-small {
     margin: 5px;
 }
-
+.btn-large {
+    margin: 5px;
+}
 .btn {
     margin: 5px;
 }

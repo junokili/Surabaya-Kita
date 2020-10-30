@@ -52,11 +52,11 @@
       <div class="card-content valign-wrapper">
         <p class="event-description center-align">{{ event.event_description }}</p>
       </div>
-      <div class="card-content card-link-div center-align valign-wrapper">
-      <span class="card-title activator center-align">{{ event.event_name }}
+      <div class="card-content card-link-div center-align">
+      <p class="card-title activator">{{ event.event_name }}
       <i class="fas fa-plus prefix white-text tooltipped" id="event-deets"
-                data-position="right" data-tooltip="Get Details"></i></span>
-    </div>
+                data-position="right" data-tooltip="Get Details"></i></p>
+      </div>
       <div class="card-reveal">
         <span class="card-title card-link-div center-align">{{ event.event_name }}
             <i class="fas fa-times prefix white-text tooltipped right" id="event-deets-close"
@@ -93,11 +93,11 @@
                 data-position="right" data-tooltip="Created by user"></i>
                 {{ event.created_by }}<br></p>    
             </div>
-    <div class="edit-buttons">
-        <a href="{{ url_for('edit_event', event_id=event._id) }}" class="btn-large func-button cyan accent-4 text-shadow">          
+    <div>
+        <a href="{{ url_for('edit_event', event_id=event._id) }}" class="btn-large func-button cyan accent-3">          
         Edit 
         <i class="fas fa-edit right"></i></a>
-        <a href="{{ url_for('delete_event', event_id=event._id) }}" class="btn-large func-button light-green accent-4 text-shadow">
+        <a href="{{ url_for('delete_event', event_id=event._id) }}" class="btn-large func-button light-green accent-4">
         Delete 
         <i class="fas fa-times-circle right"></i></a>
     </div>
