@@ -1,11 +1,29 @@
-{% extends "base.html" %} {% block content %}
-
-<div class="row flashes">
-  <h4 class="cyan accent-3 center-align white-text header-shadow">
-    Check out the upcoming events here
-  </h4>
+{% extends "base.html" %}
+{% block content %}
+<!-- search bar -->
+<div class="container">
+<div id="search-bar" class="row center-align cyan accent-3">
+<form action="{{ url_for('search')}}" method="post" class="col s12">
+<div class="row valign-wrapper center-align">
+<div class="input-field col s12 m8">
+<i class="fas fa-search prefix white-text"></i>
+<input type="text" id="query" name="query" minlength="3" class="validate" required>
+<label for="query" class="white-text">Search Events</label>
 </div>
+<div class="col s12 m4">
+          <button class="btn light-green accent-2" type="submit">
+          Search
+<i class="fas fa-search left"></i></button>
+        <a href="{{ url_for('get_events') }}" class="btn white cyan-text text-accent-3">
+        Clear</a>
+</div>
+</div>
+</form>
+</div>
+</div> 
+{% if events|length > 0 %}
 <div class="row">
+<ul class="collapsible">
   {% for event in events %}
   <div class="col s12 m3">
     <div class="card">
@@ -92,5 +110,16 @@
     </div>
   </div>
   {% endfor %}
+  </ul>
+  </div>
+  {% else %}
+  <h4 class="cyan-text text-accent-3 center-align">Sorry, no matching events found</h4>
+
+{% endif %}   
+<div class="row all-events-button">
+        <div class="col s12 center-align">
+          <a href="{{ url_for('get_events') }}" class="btn-large light-green accent-2 all-events-button">
+        Clear Search Results<i class="fas fa-times-circle right"></i></a>
+        </div>
 </div>
 {% endblock %}

@@ -23,6 +23,12 @@ def home():
     return render_template("base.html", events=events)
 
 
+@app.route('/get_events')
+def get_events():
+    events = list(mongo.db.events.find())
+    return render_template("events.html", events=events)
+
+
 @app.route('/search', methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -171,12 +177,6 @@ def delete_category(category_id):
     mongo.db.categories.remove({'_id': ObjectId(category_id)})
     flash("Category deleted")
     return redirect(url_for('get_categories'))
-
-
-@app.route('/get_events')
-def get_events():
-    events = mongo.db.events.find()
-    return render_template("events.html", events=events)
 
 
 @app.route('/create_event', methods=["GET", "POST"])
