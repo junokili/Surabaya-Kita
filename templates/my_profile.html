@@ -8,17 +8,23 @@
 {% if session.user == user.username %}
 <div class="row">
 	<div class="col s12 m8 offset-m2">
-		<div class="card-panel">
+		<div class="card-panel" id="profile">
+        <div class="col s12 m6">
         <p><i class="fas fa-user-plus prefix cyan-text text-accent-3 tooltipped sgl-event"
                 data-position="right" data-tooltip="Username"></i>
-            {{ user.username }}<br>
-            <i class="fas fa-user prefix cyan-text text-accent-3 tooltipped sgl-event"
+            {{ user.username }}</p>
+            <div class="line"></div>
+            <p><i class="fas fa-user prefix cyan-text text-accent-3 tooltipped sgl-event"
                 data-position="right" data-tooltip="Name"></i>
-            {{ user.my_name }}<br>
-            <i class="fas fa-map prefix cyan-text text-accent-3 tooltipped sgl-event"
+            {{ user.my_name }}</p>
+            <div class="line"></div>
+            <p><i class="fas fa-map prefix cyan-text text-accent-3 tooltipped sgl-event"
                 data-position="right" data-tooltip="Location"> </i>  
-            {{ user.location }}<br>
-            </p>
+            {{ user.location }}</p>
+            <div class="line"></div>
+        </div>
+        <div class="col s12 m6" id="monkey">
+        </div>
             <!-- edit button -->
 <div class="row all-events-button">
         <div class="col s12 center-align">
