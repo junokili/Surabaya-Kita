@@ -46,7 +46,7 @@
             <div class="row center-align">
             <button type="submit" class="btn-large cyan accent-3">
             Update Profile <i class="fas fa-sign-in-alt"></i></button>
-            <a href="{{ url_for('my_profile', username=session['user']) }}" class="btn-large light-green accent-4">
+            <a href="{{ url_for('my_profile', username=user.username) }}" class="btn-large light-green accent-4">
             Cancel<i class="fas fa-times-circle right"></i></a>
             </div>
 		</div>

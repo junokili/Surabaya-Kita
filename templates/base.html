@@ -8,6 +8,12 @@
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<title>Surabaya Kita</title>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script>
+   (function(){
+      emailjs.init("user_O4p1uzoCxjXWmUYNVNa1Y");
+})();
+    </script>
 </head>
 <body>
 <header>
@@ -22,15 +28,17 @@
         {% if session.user %}   
         <li class="tab"><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
         <li><a href="{{ url_for('my_events', username=session['user']) }}">My Events</a></li>
+        {% endif %}
         <li class="tab"><a href="{{ url_for('create_event') }}">Create Event</a></li>
             {% if session.user |lower == "admin"|lower %}
         <li class="tab"><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
-            {% endif %}        
+            {% endif %}
+            {% if session.user %}         
         <li><a href="{{ url_for('logout') }}" class="waves-effect waves-light text-shadow light-green accent-2 btn">Log Out</a></li>
             {% else %}
         <li><a href="{{ url_for('login') }}" class="waves-effect waves-light text-shadow light-green accent-2 btn">Log In</a></li>
         <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
-            {% endif %}      
+               {% endif %}   
       </ul>
     </div> 
   </nav>
@@ -42,10 +50,12 @@
         {% if session.user %}
         <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
         <li><a href="{{ url_for('my_events', username=session['user']) }}">My Events</a></li>
+        {% endif %}
         <li><a href="{{ url_for('create_event') }}">Create Event</a></li>
         {% if session.user |lower == "admin"|lower %}
         <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
         {% endif %}
+        {% if session.user %}
         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         {% else %}
         <li><a href="{{ url_for('login') }}">Log In</a></li>
@@ -120,7 +130,7 @@ group discounted food and drink.</p>
         {% endif %} {% endif %}
         {% endif %} {% endif %}{% endif %}
       </div>
-      <div class="card-content">
+      <div class="card-content valign-wrapper center-align">
         <p class="event-description">{{ event.event_description }}</p>
       </div>
       <div class="card-content card-link-div center-align">
@@ -262,13 +272,10 @@ group discounted food and drink.</p>
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7q25_CcuaXX7I2tSXB8VId8XLzcLrB98&callback=initMap"
     ></script>
     <script src="{{ url_for('static', filename='js/google-maps.js') }}"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init("user_O4p1uzoCxjXWmUYNVNa1Y");
-   })();
-</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+    <script src="{{ url_for('static', filename='js/send-email.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/removeFormSuccess.js') }}"></script>
 </body>
 </html>

@@ -82,7 +82,7 @@ def sign_up():
         mongo.db.users.insert_one(user)
 
         # add new user into session
-        session['user'] = request.form.get('username').lower()
+        session['user'] = request.form.get('username')
         flash("Great! You are now signed up")
         return redirect(url_for('my_profile', username=session['user']))
     locations = mongo.db.locations.find().sort('location', 1)
@@ -125,7 +125,7 @@ def edit_profile(user_id):
         }
         mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
         flash("Profile updated!")
-        return redirect(url_for('my_profile'))
+        return redirect(url_for('my_profile', username=session['user']))
 
     user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
     locations = mongo.db.locations.find().sort('location', 1)
