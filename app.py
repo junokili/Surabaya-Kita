@@ -110,9 +110,11 @@ def my_events(username):
         {"username": session["user"]})["username"]
 
     if session['user']:
+        users = mongo.db.users.find()
         events = mongo.db.events.find()
         return render_template('my_events.html',
-                               username=username, events=events)
+                               username=username, users=users,
+                               events=events)
 
 
 @app.route('/edit_profile/<user_id>', methods=["GET", "POST"])
@@ -196,7 +198,7 @@ def create_event():
         }
         mongo.db.events.insert_one(event)
         flash("New event created!")
-        return redirect(url_for('my_events'))
+        return redirect(url_for('my_events', username=session['user']))
 
     locations = mongo.db.locations.find().sort('location', 1)
     categories = mongo.db.categories.find().sort('category_name', 1)
