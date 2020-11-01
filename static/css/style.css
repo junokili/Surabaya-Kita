@@ -45,9 +45,13 @@ p {
     padding-top: 7px;
     margin-bottom: 10px;
 }
-#search-bar {
-    max-height: 95px;
-    padding-left: 40px;
+#filter-bar {
+    padding: 0px 0px;
+    margin: 0px;
+}
+#no-filter {
+    max-height: 80px;
+    margin-bottom: -8px;
 }
 .flashes h4{
     line-height: 2;
@@ -214,6 +218,8 @@ ul.social > li > a > i {
 
 /* modified materialize css */
 
+.select-wrapper input.select-dropdown {color: white; font-size: 1rem; margin-left: 0px; }
+.select-wrapper .caret {fill: white; }
 ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 .switch label input[type=checkbox]:checked+.lever {
   background-color: #84ffff;
@@ -262,5 +268,11 @@ ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 }
 #profile {
     padding: 12px;
+}
+#no-filter {
+    max-height: 180px;
+}
+.short-bottom {
+    margin-bottom: -8px;
 }
 }

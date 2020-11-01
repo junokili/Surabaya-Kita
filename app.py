@@ -26,14 +26,29 @@ def home():
 @app.route('/get_events')
 def get_events():
     events = list(mongo.db.events.find())
-    return render_template("events.html", events=events)
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("events.html", events=events,
+                           categories=categories)
 
 
 @app.route('/search', methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     events = list(mongo.db.events.find({"$text": {"$search": query}}))
-    return render_template("events.html", events=events)
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("events.html", events=events,
+                           categories=categories)
+
+
+@app.route('/cat_filter', methods=["GET", "POST"])
+def cat_filter():
+    if request.method == "POST":
+        category_name = request.form.get("category_name")
+        events = list(mongo.db.events.find({"category_name":
+                      {"$eq": category_name}}))
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("events2.html", events=events,
+                           categories=categories)
 
 
 @app.route('/login', methods=["GET", "POST"])

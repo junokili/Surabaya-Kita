@@ -1,26 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- search bar -->
-<div class="container">
-<div id="search-bar" class="row center-align cyan accent-3">
-<form action="{{ url_for('search')}}" method="post" class="col s12">
-<div class="row valign-wrapper center-align">
-<div class="input-field col s12 m8">
+<!-- search bar --> 
+<div class="row flashes">
+  <h4 class="cyan accent-3 center-align white-text header-shadow">
+    All Events
+  </h4>
+</div>
+
+<!-- category filter -->
+<div class="row cyan accent-3" id="no-filter">
+<form action="{{ url_for('cat_filter')}}" method="POST" class="col s12 m6">
+<div class="row valign-wrapper center-align white-text short-bottom">
+<div class="input-field col s8 m8 valign-wrapper">
+    <i class="fas fa-list-ul prefix left"></i>
+    <select type="category_name" id="category_name" name="category_name">
+      <option value="" disabled selected>Find Events by Category</option>
+      {% for category in categories %}
+        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+      {% endfor %}
+    </select>
+</div>
+<div class="col s4 m4 center-align">
+          <button class="btn light-green accent-2" type="submit">
+          Go
+</button>
+</div>
+</div>
+</form>
+<form action="{{ url_for('search')}}" method="post" class="col s12 m6">
+<div class="row valign-wrapper center-align short-bottom">
+<div class="input-field col s8 m8">
 <i class="fas fa-search prefix white-text"></i>
 <input type="text" id="query" name="query" minlength="3" class="validate" required>
-<label for="query" class="white-text">Search Events</label>
+<label for="query" class="white-text">Search Events by Keyword</label>
 </div>
-<div class="col s12 m4">
+<div class="col s4 m4">
           <button class="btn light-green accent-2" type="submit">
           Search
-<i class="fas fa-search left"></i></button>
-        <a href="{{ url_for('get_events') }}" class="btn white cyan-text text-accent-3">
-        Clear</a>
+        </button>
 </div>
 </div>
 </form>
 </div>
-</div> 
+
 {% if events|length > 0 %}
 <div class="row">
 <ul class="collapsible">
@@ -119,7 +141,7 @@
 <div class="row all-events-button">
         <div class="col s12 center-align">
           <a href="{{ url_for('get_events') }}" class="btn-large light-green accent-2 all-events-button">
-        Clear Search Results<i class="fas fa-times-circle right"></i></a>
+        Clear Results<i class="fas fa-times-circle right"></i></a>
         </div>
 </div>
 {% endblock %}
