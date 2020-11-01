@@ -257,18 +257,21 @@ def edit_event(event_id):
                            locations=locations)
 
 
-@app.route('/delete_event/<event_id>')
+@app.route('/delete_event/<event_id>', methods=["GET", "POST"])
 def delete_event(event_id):
-    mongo.db.events.remove({"_id": ObjectId(event_id)})
-    flash("Event deleted")
+    if request.method == "POST":
+        mongo.db.events.remove({"_id": ObjectId(event_id)})
+        flash("Event deleted")
     # get session username from database
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
 
-    if session['user']:
-        events = mongo.db.events.find()
-        return render_template('my_events.html',
-                               username=username, events=events)
+        if session['user']:
+            events = mongo.db.events.find()
+            return render_template('my_events.html',
+                                   username=username, events=events)
+    return render_template('my_events.html',
+                           username=username, events=events)
 
 
 @app.route('/single_event/<event_id>')

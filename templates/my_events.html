@@ -97,9 +97,12 @@
         <a href="{{ url_for('edit_event', event_id=event._id) }}" class="btn-large func-button cyan accent-3">          
         Edit 
         <i class="fas fa-edit right"></i></a>
-        <a href="{{ url_for('delete_event', event_id=event._id) }}" class="btn-large func-button light-green accent-4">
-        Delete 
-        <i class="fas fa-times-circle right"></i></a>
+        <form action="{{ url_for('delete_event', event_id=event._id) }}" method="POST">
+        <button class="btn-large func-button light-green accent-4" name="delete" type="submit" onclick="archiveFunction()">
+            <i class="fas fa-times-circle right"></i>
+                Delete
+        </button>
+        </form>
     </div>
     </div>
   </div>
