@@ -4,6 +4,8 @@ from flask import (Flask, render_template, redirect,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
+import re
 if os.path.exists('env.py'):
     import env
 
@@ -25,10 +27,12 @@ def home():
 
 @app.route('/get_events')
 def get_events():
-    events = list(mongo.db.events.find())
+    current_time = datetime.now()
+    events = list(mongo.db.events.find().sort("event_date", 1))
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("events.html", events=events,
-                           categories=categories)
+                           categories=categories,
+                           current_time=current_time)
 
 
 @app.route('/search', methods=["GET", "POST"])
