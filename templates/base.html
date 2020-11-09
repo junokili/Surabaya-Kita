@@ -279,15 +279,5 @@ group discounted food and drink.</p>
     <script src="{{ url_for('static', filename='js/send-email.js') }}"></script>
         <script src="{{ url_for('static', filename='js/removeFormSuccess.js') }}"></script>
         <script src="{{ url_for('static', filename='js/delete.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/addClearResultsBtn.js') }}"></script>
-        <script>(
-function addClearResultsBtn() {
-    var el = "";
-    el += `<div class="col s12 center-align">
-          <a href="{{ url_for('get_events') }}" class="btn-large light-green accent-2 all-events-button">
-        Clear Results<i class="fas fa-times-circle right"></i></a>
-        </div>`;
-      document.getElementById("clear-results").innerHTML = el;
-})</script>
 </body>
 </html>
