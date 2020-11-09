@@ -37,22 +37,27 @@ def get_events():
 
 @app.route('/search', methods=["GET", "POST"])
 def search():
+    current_time = datetime.now()
     query = request.form.get("query")
-    events = list(mongo.db.events.find({"$text": {"$search": query}}))
+    events = list(mongo.db.events.find(
+                  {"$text": {"$search": query}}).sort("event_date", 1))
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("events.html", events=events,
-                           categories=categories)
+    return render_template("search_results.html", events=events,
+                           categories=categories,
+                           current_time=current_time)
 
 
 @app.route('/cat_filter', methods=["GET", "POST"])
 def cat_filter():
     if request.method == "POST":
+        current_time = datetime.now()
         category_name = request.form.get("category_name")
         events = list(mongo.db.events.find({"category_name":
                       {"$eq": category_name}}))
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("events2.html", events=events,
-                           categories=categories)
+    return render_template("search_results.html", events=events,
+                           categories=categories,
+                           current_time=current_time)
 
 
 @app.route('/login', methods=["GET", "POST"])
@@ -193,10 +198,11 @@ def edit_category(category_id):
     return render_template('edit_category.html', category=category)
 
 
-@app.route('/delete_category/<category_id>')
+@app.route('/delete_category/<category_id>', methods=["GET", "POST"])
 def delete_category(category_id):
-    mongo.db.categories.remove({'_id': ObjectId(category_id)})
-    flash("Category deleted")
+    if request.method == "POST":
+        mongo.db.categories.remove({'_id': ObjectId(category_id)})
+        flash("Category deleted")
     return redirect(url_for('get_categories'))
 
 
@@ -276,13 +282,6 @@ def delete_event(event_id):
                                    username=username, events=events)
     return render_template('my_events.html',
                            username=username, events=events)
-
-
-@app.route('/single_event/<event_id>')
-def single_event(event_id):
-    event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
-    return render_template('single_event.html',
-                           event=event)
 
 
 @app.route('/contact_us')

@@ -161,6 +161,9 @@ div#cafe {
 .func-button {
     margin: 10px;
 }
+#query {
+    color: white;
+}
 /* profile */
 #monkey {
     background-image: url("../images/monkey.jpg");
@@ -225,8 +228,7 @@ ul.social > li > a > i {
 }
 
 /* modified materialize css */
-
-#no-filter.select-wrapper input.select-dropdown {color: white; font-size: 1rem; margin-left: 0px; }
+#category_search .select-wrapper input.select-dropdown {color: white; font-size: 1rem; margin-left: 0px; }
 .select-wrapper .caret {fill: white; }
 ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 .switch label input[type=checkbox]:checked+.lever {

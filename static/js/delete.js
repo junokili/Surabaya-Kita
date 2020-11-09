@@ -1,6 +1,6 @@
-function archiveFunction() {
-event.preventDefault(); // prevent form submit
-var form = event.target.form; // storing the form
+function deleteFunction() {
+event.preventDefault(); // prevent default delete
+var form = event.target.form;
         swal({
   title: "Are you sure?",
   text: "You won't be able to undo the action.",
@@ -13,7 +13,7 @@ var form = event.target.form; // storing the form
 },
 function(isConfirm){
   if (isConfirm) {
-    form.submit();          // submitting the form when user press yes
+    form.submit();          // delete when user press yes
   } 
 });
 }
