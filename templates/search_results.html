@@ -3,8 +3,7 @@
 
 <!-- category filter -->
 <div class="row cyan accent-3" id="no-filter">
-  <form action="{{ url_for('cat_filter') }}" method="POST" class="col s12 m6"
-  onsubmit="addClearResultsBtn()">
+  <form action="{{ url_for('cat_filter') }}" method="POST" class="col s12 m6">
     <div class="row valign-wrapper center-align white-text short-bottom">
       <div class="input-field col s8 m8 valign-wrapper">
         <i class="fas fa-list-ul prefix left"></i>
@@ -50,6 +49,7 @@
     Events This Month
   </h4>
 </div>
+{% if events|length > 0 %}
 <div class="row">
   <ul class="collapsible">
     {% for event in events %} {% if current_time.month == 1 %} {% if "January"
@@ -1703,4 +1703,21 @@
     </div>
   </li>
 </ul>
+
+{% else %}
+<h4 class="cyan-text text-accent-3 center-align">
+  Sorry, no matching events found
+</h4>
+
+{% endif %}
+<div class="row all-events-button" id="clear-results">
+<div class="col s12 center-align">
+    <a
+      href="{{ url_for('get_events') }}"
+      class="btn-large light-green accent-2 all-events-button"
+    >
+      Clear Results<i class="fas fa-times-circle right"></i
+    ></a>
+  </div>
+</div>
 {% endblock %}
