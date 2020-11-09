@@ -26,29 +26,16 @@
         <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
         {% else %} {% if event.category_name == "Book Club" %}
         <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+        {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+        {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
         {% endif %}
-        {% endif %}
+        {% endif %}{% endif %}
         {% endif %} {% endif %}
         {% endif %} {% endif %}{% endif %}
-      </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %}
-        {% endif %}
-        {% endif %} {% endif %}
-        {% endif %} {% endif %}{% endif %}
+      </div>        
+      <div class="event-category">{{ event.category_name }}</div>
       <div class="card-content valign-wrapper">
         <p class="event-description center-align">{{ event.event_description }}</p>
       </div>
@@ -93,12 +80,12 @@
                 data-position="right" data-tooltip="Created by user"></i>
                 {{ event.created_by }}<br></p>    
             </div>
-    <div>
-        <a href="{{ url_for('edit_event', event_id=event._id) }}" class="btn-large func-button cyan accent-3">          
+    <div class="card-action">
+        <a href="{{ url_for('edit_event', event_id=event._id) }}" class="btn func-button cyan accent-3">          
         Edit 
         <i class="fas fa-edit right"></i></a>
         <form action="{{ url_for('delete_event', event_id=event._id) }}" method="POST">
-        <button class="btn-large func-button light-green accent-4" name="delete" type="submit" onclick="archiveFunction()">
+        <button class="btn func-button light-green accent-4" name="delete" type="submit" onclick="deleteFunction()">
             <i class="fas fa-times-circle right"></i>
                 Delete
         </button>

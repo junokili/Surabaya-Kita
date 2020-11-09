@@ -108,30 +108,28 @@ group discounted food and drink.</p>
       <div class="card-image">
         {% if event.category_name == "Cycle" %}
         <img src="{{ url_for('static', filename='images/cycle.jpg') }}" />
-        <div class="event-category">Cycle</div>
         {% else %} {% if event.category_name == "Coffee" %}
         <img src="{{ url_for('static', filename='images/coffee.jpg') }}" />
-        <div class="event-category">Coffee</div>
         {% else %} {% if event.category_name == "Walk" %}
         <img src="{{ url_for('static', filename='images/walk.jpg') }}" />
-        <div class="event-category">Walk</div>
         {% else %} {% if event.category_name == "Market" %}
         <img src="{{ url_for('static', filename='images/market.jpg') }}" />
-        <div class="event-category">Market</div>
         {% else %} {% if event.category_name == "Social" %}
         <img src="{{ url_for('static', filename='images/social.jpg') }}" />
-        <div class="event-category">Social</div>
         {% else %} {% if event.category_name == "Workshop" %}
         <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
-        <div class="event-category">Workshop</div>
         {% else %} {% if event.category_name == "Book Club" %}
         <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
-        <div class="event-category">Bookclub</div>
+        {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+        {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
         {% endif %}
-        {% endif %}
+        {% endif %}{% endif %}
         {% endif %} {% endif %}
         {% endif %} {% endif %}{% endif %}
       </div>
+              <div class="event-category">{{ event.category_name }}</div>
       <div class="card-content valign-wrapper center-align">
         <p class="event-description">{{ event.event_description }}</p>
       </div>
@@ -281,5 +279,15 @@ group discounted food and drink.</p>
     <script src="{{ url_for('static', filename='js/send-email.js') }}"></script>
         <script src="{{ url_for('static', filename='js/removeFormSuccess.js') }}"></script>
         <script src="{{ url_for('static', filename='js/delete.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/addClearResultsBtn.js') }}"></script>
+        <script>(
+function addClearResultsBtn() {
+    var el = "";
+    el += `<div class="col s12 center-align">
+          <a href="{{ url_for('get_events') }}" class="btn-large light-green accent-2 all-events-button">
+        Clear Results<i class="fas fa-times-circle right"></i></a>
+        </div>`;
+      document.getElementById("clear-results").innerHTML = el;
+})</script>
 </body>
 </html>

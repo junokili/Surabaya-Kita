@@ -3,10 +3,9 @@
 
 <!-- category filter -->
 <div class="row cyan accent-3" id="no-filter">
-  <form action="{{ url_for('cat_filter') }}" method="POST" class="col s12 m6"
-  onsubmit="addClearResultsBtn()">
+  <form action="{{ url_for('cat_filter') }}" method="POST" class="col s12 m6">
     <div class="row valign-wrapper center-align white-text short-bottom">
-      <div class="input-field col s8 m8 valign-wrapper">
+      <div class="input-field col s8 m8 valign-wrapper" id="category_search">
         <i class="fas fa-list-ul prefix left"></i>
         <select type="category_name" id="category_name" name="category_name">
           <option value="" disabled selected>Find Events by Category</option>
@@ -71,25 +70,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+          <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -195,25 +183,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -319,25 +296,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -443,25 +409,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -567,25 +522,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -691,25 +635,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -815,25 +748,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -939,25 +861,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -1063,25 +974,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -1187,25 +1087,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -1311,25 +1200,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -1435,25 +1313,14 @@
           <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
           {% else %} {% if event.category_name == "Book Club" %}
           <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
+          {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+          {% else %}
+          <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
           {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}
+          %}{% endif %}{% endif %}
         </div>
-        {% if event.category_name == "Cycle" %}
-        <div class="event-category">Cycle</div>
-        {% else %} {% if event.category_name == "Coffee" %}
-        <div class="event-category">Coffee</div>
-        {% else %} {% if event.category_name == "Walk" %}
-        <div class="event-category">Walk</div>
-        {% else %} {% if event.category_name == "Market" %}
-        <div class="event-category">Market</div>
-        {% else %} {% if event.category_name == "Social" %}
-        <div class="event-category">Social</div>
-        {% else %} {% if event.category_name == "Workshop" %}
-        <div class="event-category">Workshop</div>
-        {% else %} {% if event.category_name == "Book Club" %}
-        <div class="event-category">Bookclub</div>
-        {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-        %}{% endif %}
+        <div class="event-category">{{ event.category_name }}</div>
         <div class="card-content valign-wrapper center-align">
           <p class="event-description">{{ event.event_description }}</p>
         </div>
@@ -1590,25 +1457,14 @@
                 <img
                   src="{{ url_for('static', filename='images/bookclub.jpg') }}"
                 />
+                {% else %} {% if event.category_name == "Language Class" %}
+          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
+                {% else %}
+        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
                 {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {%
-                endif %}{% endif %}
+                endif %}{% endif %} {% endif %}
               </div>
-              {% if event.category_name == "Cycle" %}
-              <div class="event-category">Cycle</div>
-              {% else %} {% if event.category_name == "Coffee" %}
-              <div class="event-category">Coffee</div>
-              {% else %} {% if event.category_name == "Walk" %}
-              <div class="event-category">Walk</div>
-              {% else %} {% if event.category_name == "Market" %}
-              <div class="event-category">Market</div>
-              {% else %} {% if event.category_name == "Social" %}
-              <div class="event-category">Social</div>
-              {% else %} {% if event.category_name == "Workshop" %}
-              <div class="event-category">Workshop</div>
-              {% else %} {% if event.category_name == "Book Club" %}
-              <div class="event-category">Bookclub</div>
-              {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {%
-              endif %}{% endif %}
+              <div class="event-category">{{ event.category_name }}</div>
               <div class="card-content valign-wrapper center-align">
                 <p class="event-description">{{ event.event_description }}</p>
               </div>
