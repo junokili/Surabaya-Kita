@@ -76,19 +76,37 @@ p {
     display: flex;
 }
 div#map {
-  min-height: 360px;
+  min-height: 200px;
   max-width: 700px;
-  margin: 10px 25px 20px;
+  margin: 10px auto 20px;
+  }
+div#about-us {
+  min-height: 220px;
+  margin: -20px auto 10px;
+  }
+#about-us h4 {
+    padding-top: 10px;
+    padding-left: 20px;
   }
 div#cafe {
   min-height: 360px;
   max-width: 700px;
-  margin: 10px 25px 20px;
-  background-image: url('cafe.jpg');
+  margin: 0px auto 10px;
+  background-image: url('../images/cafe-front.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+div.carousel {
+  height: 220px;
+  max-width: 700px;
+  margin: 0px auto 10px;
+  }
+/* .carousel-item.active {
+    transform: translateX(175px) translateY(25px) translateX(0px) translateX(0px) translateZ(0px) !important;
+    width: 350px;
+    height: 350px;
+  } */
 /* managing categories */
 .event-category {
     background-color: #00e5ff ;
@@ -285,4 +303,9 @@ ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 .short-bottom {
     margin-bottom: -8px;
 }
+/* .carousel-item.active {
+    transform: translateX(175px) translateY(25px) translateX(0px) translateX(0px) translateZ(0px) !important;
+    width: 350px;
+    height: 350px;
+  } */
 }
