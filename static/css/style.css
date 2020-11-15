@@ -76,7 +76,7 @@ p {
     display: flex;
 }
 div#map {
-  min-height: 200px;
+  min-height: 300px;
   max-width: 700px;
   margin: 10px auto 20px;
   }
@@ -124,6 +124,9 @@ div.carousel {
     color: white;
 }
 /* events cards */
+.collapsible-body {
+    padding: 0px;
+}
 .card-link-i {
     margin-left: 50px;
 }
@@ -272,12 +275,26 @@ ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 .timepicker-canvas-bearing { fill: #00e5ff !important; }
 .timepicker-canvas-bg { fill: #00e5ff !important; }
 /* responsiveness */
-@media (max-width: 765px) {
-
+@media only screen and (max-width: 800px){
+#mini-map {
+    max-width: 220px;
+}  
+.footer .fa {
+    font-size: 24px;
+}
+.list-inline > li {
+ padding-right: 0px;
+ padding-left: 0px;
+}
+.fixed > p {
+    font-size: 18px;
+}
+}
+@media only screen and (max-width: 765px) {
 #sby-kita {
     margin-left: -40px;
     margin-right: -20px;
-    font-size: 32px;
+    font-size: 38px;
     text-align: left;
 }
 .bottom-border {
@@ -303,9 +320,37 @@ ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 .short-bottom {
     margin-bottom: -8px;
 }
-/* .carousel-item.active {
-    transform: translateX(175px) translateY(25px) translateX(0px) translateX(0px) translateZ(0px) !important;
-    width: 350px;
-    height: 350px;
-  } */
+@media (max-width: 360px) {
+h4 {
+    font-size: 28px;
+}
+#sby-kita {
+    font-size: 32px;
+}
+.input-field>label {
+    font-size: 12px;
+}
+#category_search .select-wrapper input.select-dropdown {
+    font-size: 12px;
+}
+}
+/* galaxy fold .... */
+@media (max-width: 300px) {
+h4 {
+    font-size: 28px;
+}
+#sby-kita {
+    font-size: 28px;
+}
+.input-field>label {
+    font-size: 10px;
+}
+#category_search .select-wrapper input.select-dropdown {
+    font-size: 10px;
+}
+#search-btn-sm {
+    margin: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 }
