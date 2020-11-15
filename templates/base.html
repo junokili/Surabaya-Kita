@@ -65,7 +65,7 @@
             </li>
             {% if session.user |lower == "admin"|lower %}
             <li class="tab">
-              <a href="{{ url_for('get_categories') }}">Manage Categories</a>
+              <a href="{{ url_for('get_categories') }}">Categories</a>
             </li>
             {% endif %} {% if session.user %}
             <li>
@@ -130,7 +130,11 @@
     {% block content %}
     <!-- info about site -->
     <p>
-      This is the place to check out local events in Surabaya. Take a look at
+      Run by Surabaya Kita Cafe, this is the place to check out local events in Surabaya. 
+      If you don't want to take part in Anis event, then why not just visit the 
+      <a href="#cafe" class="cyan-text text-accent-3"
+        >cafe</a> for a freshly brewed coffe and some
+      delicious food. Take a look at
       <a href="{{ url_for('get_events') }}" class="cyan-text text-accent-3"
         >what is happening</a
       >, or
@@ -144,17 +148,18 @@
         >here.</a
       ><br />
       <br />
-      Not sure where to hold your event? You're welcome to hold your event in
+      Want to create an event, but aren't sure where to hold it? Then why not hold your event in
       our
       <a href="#cafe" class="cyan-text text-accent-3">very, own cafe</a>, a
-      friendly, relaxed place to hang out and chat. <br />
-      <br />
+      friendly, relaxed place to hang out and chat.
       If you want to hold a workshop or a larger gathering then please
       <a href="{{ url_for('contact_us') }}" class="cyan-text text-accent-3"
         >contact us</a
       >
       about our dedicated space in the cafe. If you wish to book the space we
-      can also offer you and your group discounted food and drink.
+      can also offer you and your group discounted food and drink.<br /><br />
+      Join in and let's make our local community stronger!
+
     </p>
 
     <div class="row flashes">
@@ -164,12 +169,12 @@
     </div>
     <p>
       The following events are organised by Surabaya Kita and are held every
-      month in Surabaya Kita Cafe.
+      month either in Surabaya Kita Cafe or out exploring the local area.
     </p>
     <!-- admin created events -->
     <div class="row">
       {% for event in events %} {% if event.created_by == "admin" %}
-      <div class="col s12 m3">
+      <div class="col s12 m4 l3">
         <div class="card">
           <div class="card-image">
             {% if event.category_name == "Cycle" %}
@@ -309,7 +314,7 @@
     </div>
     <div class="row">
       <div class="col s12">
-          <div class="col s12 m6 l4" id="cafe"></div>
+ <!--         <div class="col s12 m6 l4" id="cafe"></div> -->
           <div class="col s12 m6 l8" id="about-us">
             <h4 class="cyan-text text-accent-3">About Us</h4>
             <p>
@@ -324,62 +329,30 @@
               events have expanded to include workshops and outdoor
               activities.<br /><br />
               Check out
-              <a
-                href="{{ url_for('get_events') }}"
-                class="cyan-text text-accent-3"
-                >what's on!</a
-              >
+              <a href="{{ url_for('get_events') }}" class="cyan-text text-accent-3">what's on!</a>
             </p>
+          </div>
+          <div class="col s12 m6 l4">
+            <div id="map"></div>
           </div>
         </div>
       </div>
       <div class="row">
-      <div class="col s12">
-            <div class="col s12 m6 l8">
-        <div class="carousel">
-          <a class="carousel-item" href="#one!"
-            ><img
-              src="{{ url_for('static', filename='images/carousel/sq-cafe-inside.jpg') }}"
-          /></a>
-          <a class="carousel-item" href="#two!"
-            ><img
-              src="{{ url_for('static', filename='images/carousel/sq-cafe-front.jpg') }}"
-          /></a>
-          <a class="carousel-item" href="#three!"
-            ><img
-              src="{{ url_for('static', filename='images/carousel/sq-pizza-pasta.jpg') }}"
-          /></a>
-          <a class="carousel-item" href="#four!"
-            ><img
-              src="{{ url_for('static', filename='images/carousel/sq-cake.jpg') }}"
-          /></a>
-          <a class="carousel-item" href="#five!"
-            ><img
-              src="{{ url_for('static', filename='images/carousel/sq-sate.jpg') }}"
-          /></a>
-          <a class="carousel-item" href="#six!"
-            ><img
-              src="{{ url_for('static', filename='images/carousel/sq-coffee.jpg') }}"
-          /></a>
-          <a class="carousel-item" href="#seven!"
-            ><img
-              src="{{ url_for('static', filename='images/carousel/sq-breakfast.jpg') }}"
-          /></a>
-          <a class="carousel-item" href="#eight!"
-            ><img
-              src="{{ url_for('static', filename='images/carousel/sq-pavlova.jpg') }}"
-          /></a>
-          <a class="carousel-item" href="#nine!"
-            ><img
-              src="{{ url_for('static', filename='images/carousel/sq-nasi-campur.jpg') }}"
-          /></a>
-        </div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div id="map"></div>
-      </div>
-
-      </div>
+          <div class="col s12">
+            <div class="card-panel">
+                <div class="carousel">
+                    <a class="carousel-item" href="#one!"><img src="{{ url_for('static', filename='images/carousel/sq-cafe-inside.jpg') }}"/></a>
+                    <a class="carousel-item" href="#two!"><img src="{{ url_for('static', filename='images/carousel/sq-cafe-front.jpg') }}"/></a>
+                    <a class="carousel-item" href="#three!"><img src="{{ url_for('static', filename='images/carousel/sq-pizza-pasta.jpg') }}"/></a>
+                    <a class="carousel-item" href="#four!"><img src="{{ url_for('static', filename='images/carousel/sq-cake.jpg') }}"/></a>
+                    <a class="carousel-item" href="#five!"><img src="{{ url_for('static', filename='images/carousel/sq-sate.jpg') }}"/></a>
+                    <a class="carousel-item" href="#six!"><img src="{{ url_for('static', filename='images/carousel/sq-coffee.jpg') }}"/></a>
+                    <a class="carousel-item" href="#seven!"><img src="{{ url_for('static', filename='images/carousel/sq-breakfast.jpg') }}"/></a>
+                    <a class="carousel-item" href="#eight!"><img src="{{ url_for('static', filename='images/carousel/sq-pavlova.jpg') }}"/></a>
+                    <a class="carousel-item" href="#nine!"><img src="{{ url_for('static', filename='images/carousel/sq-nasi-campur.jpg') }}"/></a>
+                </div>
+            </div>
+          </div>
       </div>
     {% endblock %}
     <!-- footer -->

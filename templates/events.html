@@ -1,6 +1,4 @@
 {% extends "base.html" %} {% block content %}
-<!-- search bar -->
-
 <!-- category filter -->
 <div class="row cyan accent-3" id="no-filter">
   <form action="{{ url_for('cat_filter') }}" method="POST" class="col s12 m6">
@@ -22,6 +20,7 @@
       </div>
     </div>
   </form>
+  <!-- search bar -->
   <form action="{{ url_for('search')}}" method="post" class="col s12 m6">
     <div class="row valign-wrapper center-align short-bottom">
       <div class="input-field col s8 m8">
@@ -37,7 +36,7 @@
         <label for="query" class="white-text">Search Events by Keyword</label>
       </div>
       <div class="col s4 m4">
-        <button class="btn light-green accent-2" type="submit">
+        <button class="btn light-green accent-2" id="search-btn-sm" type="submit">
           Search
         </button>
       </div>
@@ -53,7 +52,7 @@
   <ul class="collapsible">
     {% for event in events %} {% if current_time.month == 1 %} {% if "January"
     in event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -166,7 +165,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 2 %} {% if "February" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -279,7 +278,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 3 %} {% if "March" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -392,7 +391,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 4 %} {% if "April" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -505,7 +504,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 5 %} {% if "May" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -618,7 +617,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 6 %} {% if "June" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -731,7 +730,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 7 %} {% if "July" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -844,7 +843,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 8 %} {% if "August" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -957,7 +956,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 9 %} {% if "September" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -1070,7 +1069,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 10 %} {% if "October" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -1183,7 +1182,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 11 %} {% if "November" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -1296,7 +1295,7 @@
     </div>
     {% endif %} {% else %} {% if current_time.month == 12 %} {% if "December" in
     event.event_date %}
-    <div class="col s12 m3">
+    <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           {% if event.category_name == "Cycle" %}
@@ -1426,7 +1425,7 @@
       <div class="row">
         <ul class="collapsible">
           {% for event in events %}
-          <div class="col s12 m3">
+          <div class="col s12 m4 l3">
             <div class="card">
               <div class="card-image">
                 {% if event.category_name == "Cycle" %}
