@@ -1,6 +1,7 @@
+/* validated through https://jigsaw.w3.org/css-validator/validator */
+/* import Khumb Sans google font */
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
-
-/* general layout, typogrpahy etc settings */
+/* general layout, typography etc settings */
 body {
     font-family: 'Kumbh Sans', sans-serif;
 }
@@ -11,9 +12,6 @@ p {
 .strong {
     font-weight: 600;
 }
-.event-description {
-    padding: 0px;
-}
 .header-shadow {
     -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
@@ -21,9 +19,6 @@ p {
 }
 .text-shadow {
     text-shadow: 1px 1px #aaaaaa;
-}
-.white-text {
-    color: white;
 }
 .btn-small {
     margin: 5px;
@@ -34,7 +29,7 @@ p {
 .btn {
     margin: 5px;
 }
-/* header, navbar, flashes and search bar */
+/* header, navbar, flashes */
 #sby-kita {
     font-size: 44px;
     margin-left: 20px;
@@ -45,35 +40,12 @@ p {
     padding-top: 7px;
     margin-bottom: 10px;
 }
-#filter-bar {
-    padding: 0px 0px;
-    margin: 0px;
-}
-#no-filter {
-    max-height: 80px;
-    margin-bottom: -8px;
-}
 .flashes h4{
     line-height: 2;
-}
-#all-events-flash {
-    line-height: 2;
-    padding: 0px;
-}
-#all-events-flash h4 {
-    margin-left: auto;
-    margin-right: auto;
-}
-.collapsible-header .col strong {
-    margin: 5px;
-    line-height: 42px;
 }
 /* home page */
 .all-events-button {
     margin-top: 25px;
-}
-.flex {
-    display: flex;
 }
 div#map {
   min-height: 300px;
@@ -101,41 +73,41 @@ div.carousel {
   height: 220px;
   max-width: 700px;
   margin: 0px auto 10px;
-  }
-/* .carousel-item.active {
-    transform: translateX(175px) translateY(25px) translateX(0px) translateX(0px) translateZ(0px) !important;
-    width: 350px;
-    height: 350px;
-  } */
-/* managing categories */
+}
+/* events page */
+/* search bar */
+#no-filter {
+    max-height: 80px;
+    margin-bottom: -8px;
+}
+#query {
+    color: white;
+}
+/* all events collapsible */
+#all-events-flash {
+    line-height: 2;
+    padding: 0px;
+}
+#all-events-flash h4 {
+    margin-left: auto;
+    margin-right: auto;
+}
+.collapsible-header .col strong {
+    margin: 5px;
+    line-height: 42px;
+}
+.collapsible-body {
+    padding: 0px;
+}
+/* event card */
 .event-category {
     background-color: #00e5ff ;
     color: white;
     font-size: 24px;
     text-align: center;
 }
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
-    color: white;
-    font-size: 24px;
-    transition-property: color;
-   -webkit-transition-property: color 0.5s ease;
-}
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
-    color: white;
-}
-/* events cards */
-.collapsible-body {
-    padding: 0px;
-}
 .card-link-i {
     margin-left: 50px;
-}
-#sgl-event-title {
-    padding: 20px;
-    margin-bottom: 0px;
-}
-#sgl-event-card {
-    margin-top: 0px;
 }
 .sgl-event {
     margin: 5px;
@@ -152,6 +124,9 @@ div.carousel {
     background-color: #b2ff59  !important;
     margin: 0px;
     height: 100px !important;
+}
+.card-link-div span {
+    margin: 5px;
 }
 .card-link-div a {
     color: #fff;
@@ -181,9 +156,6 @@ div.carousel {
 }
 .func-button {
     margin: 10px;
-}
-#query {
-    color: white;
 }
 /* profile */
 #monkey {
@@ -247,17 +219,12 @@ ul.social > li > a > i {
     font-size: 52px;
     color: #fff;
 }
-
 /* modified materialize css */
 #category_search .select-wrapper input.select-dropdown {color: white; font-size: 1rem; margin-left: 0px; }
 .select-wrapper .caret {fill: white; }
 ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
-.switch label input[type=checkbox]:checked+.lever {
-  background-color: #84ffff;
-}
-.switch label input[type=checkbox]:checked+.lever:after {
-  background-color: #00e5ff ;
-}
+.switch label input[type=checkbox]:checked+.lever {background-color: #84ffff;}
+.switch label input[type=checkbox]:checked+.lever:after {background-color: #00e5ff;}
 .datepicker-date-display { background: #00e5ff; }
 .month-prev:hover { background: #00e5ff; }
 .month-next:hover { background: #00e5ff; }
@@ -266,7 +233,6 @@ ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 .datepicker-done { color: #00e5ff !important;}
 .datepicker-cancel { color: #00e5ff !important;}
 .datepicker-clear { color: #64dd17   !important;}
-
 .timepicker-digital-display { background: #00e5ff !important; }
 .timepicker-close { color: #00e5ff !important;}
 .timepicker-clear { color: #64dd17   !important;}
@@ -319,6 +285,7 @@ ul.dropdown-content.select-dropdown li span {color: #00e5ff; }
 }
 .short-bottom {
     margin-bottom: -8px;
+}
 }
 @media (max-width: 360px) {
 h4 {
