@@ -8,47 +8,47 @@
     <div class="col s12 m3">
       <div class="card">
         <div class="card-image">
-          {% if category.category_name == "Cycle" %}
-          <img src="{{ url_for('static', filename='images/cycle.jpg') }}" />
-          {% else %} {% if category.category_name == "Coffee" %}
-          <img src="{{ url_for('static', filename='images/coffee.jpg') }}" />
-          {% else %} {% if category.category_name == "Walk" %}
-          <img src="{{ url_for('static', filename='images/walk.jpg') }}" />
-          {% else %} {% if category.category_name == "Market" %}
-          <img src="{{ url_for('static', filename='images/market.jpg') }}" />
-          {% else %} {% if category.category_name == "Social" %}
-          <img src="{{ url_for('static', filename='images/social.jpg') }}" />
-          {% else %} {% if category.category_name == "Workshop" %}
-          <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
-          {% else %} {% if category.category_name == "Book Club" %}
-          <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
-          {% else %} {% if category.category_name == "Language Class" %}
-          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
-          {% else %}
-          <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
-          {% endif %} {% endif %} {% endif %} {% endif %} {% endif %} {% endif
-          %}{% endif %}{% endif %}
+            {% if event.category_name == "Cycle" %}
+            <img src="{{ url_for('static', filename='images/cycle.jpg') }}" alt="cycle image" />
+            {% else %} {% if event.category_name == "Coffee" %}
+            <img src="{{ url_for('static', filename='images/coffee.jpg') }}" alt="coffee image"/>
+            {% else %} {% if event.category_name == "Walk" %}
+            <img src="{{ url_for('static', filename='images/walk.jpg') }}" alt="walk image"/>
+            {% else %} {% if event.category_name == "Market" %}
+            <img src="{{ url_for('static', filename='images/market.jpg') }}" alt="market image"/>
+            {% else %} {% if event.category_name == "Social" %}
+            <img src="{{ url_for('static', filename='images/social.jpg') }}" alt="social image"/>
+            {% else %} {% if event.category_name == "Workshop" %}
+            <img src="{{ url_for('static', filename='images/workshop.jpg') }}" alt="workshop image"/>
+            {% else %} {% if event.category_name == "Book Club" %}
+            <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" alt="bookclub image"/>
+            {% else %} {% if event.category_name == "Language Class" %}
+            <img src="{{ url_for('static', filename='images/language.jpg') }}" alt="class image"/>
+            {% else %} <!-- default image -->
+            <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" alt="default event image"/>
+            {% endif %} {% endif %} {% endif %} {% endif %} 
+            {% endif %} {% endif %} {% endif %} {% endif %}
         </div>
         <div class="event-category">{{ category.category_name }}</div>
         <div class="card-action center-align">
-        <a href="{{ url_for('edit_category', category_id=category._id) }}" class="btn func-button cyan accent-3">          
-        Edit 
-        <i class="fas fa-edit right"></i></a>
-      <form action="{{ url_for('delete_category', category_id=category._id) }}" method="POST">
-        <button class="btn func-button light-green accent-4" name="delete" type="submit" onclick="deleteFunction()">
-            <i class="fas fa-times-circle right"></i>
-                Delete
-        </button>
-        </form>
+            <a href="{{ url_for('edit_category', category_id=category._id) }}" class="btn func-button cyan accent-3">          
+            Edit 
+            <i class="fas fa-edit right"></i></a>
+            <form action="{{ url_for('delete_category', category_id=category._id) }}" method="POST">
+                <button class="btn func-button light-green accent-4" name="delete" type="submit" onclick="deleteFunction()">
+                    <i class="fas fa-times-circle right"></i>
+                    Delete
+                </button>
+            </form>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
 <div class="row">
-<div class="col s12 center-align">
-<a href="{{ url_for('add_category') }}" class="btn-large cyan accent-3">
-Add new Category <i class="fas fa-plus-square right"></i></a>
-</div>
+    <div class="col s12 center-align">
+        <a href="{{ url_for('add_category') }}" class="btn-large cyan accent-3">
+        Add new Category <i class="fas fa-plus-square right"></i></a>
+    </div>
 </div>
 {% endblock %}

@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<!-- header -->
 <div class="row flashes">
-<h4 class="cyan accent-3 center-align white-text header-shadow">Join our community</h4> 
+    <h4 class="cyan accent-3 center-align white-text header-shadow">Join our community</h4> 
 </div>
-<p class="center-align">Signing up enables you to register interest in existing events and also to create your own unique events.</p>
-
+<p class="center-align">Signing up enables you to register interest in existing events and also to create your own unique events.
+</p>
+<!-- sign up form -->
 <div class="row">
 	<form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('sign_up') }}">
 		<div class="card-panel">
@@ -32,37 +33,38 @@
 				<div class="input-field col s12">
                 <i class="fas fa-user prefix cyan-text text-accent-3"></i>
 					<input id="my_name" name="my_name" type="text" class="validate"
-                    minlength="5" maxlength="50" pattern="^[a-zA-Z0-9 ]{5,15}$" required>
+                    minlength="5" maxlength="50" pattern="^[a-zA-Z0-9 ]{5,50}$" required>
 					<label for="my_name" class="cyan-text text-accent-3">  Name</label>
 				</div>
 			</div>
             <!-- location -->
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="fas fa-map prefix cyan-text text-accent-3"></i>
-    <select id="location" name="location" class="validate" required>
-      <option value="" disabled selected>Choose your area</option>
-      {% for location in locations %}
-        <option value="{{ location.location }}">{{ location.location }}</option>
-      {% endfor %}
-    </select>
-    <label for="location"> Your location</label>
-      </div>
-  </div>     
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-map prefix cyan-text text-accent-3"></i>
+                    <select id="location" name="location" class="validate" required>
+                        <option value="" disabled selected>Choose your area</option>
+                        {% for location in locations %}
+                        <option value="{{ location.location }}">{{ location.location }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="location"> Your location</label>
+                </div>
+            </div>     
   <!-- sign up new user -->
             <div class="row center-align">
-            <button type="submit" class="btn-large cyan accent-3">
-            Sign Up <i class="fas fa-sign-in-alt"></i></button>
+                <button type="submit" class="btn-large cyan accent-3">
+                Sign Up <i class="fas fa-sign-in-alt"></i>
+                </button>
             </div>
 		</div>
 	</form>
 </div>
 <div class="row">
-<div class="col s12">
-<p class="center-align">Already signed up? 
-<a class="cyan-text text-accent-3" href="{{ url_for('login') }}">
-Login</a>
-</p>
-</div>
+  <div class="col s12">
+    <p class="center-align">Already signed up? 
+        <a class="cyan-text text-accent-3" href="{{ url_for('login') }}">
+        Login</a>
+    </p>
+  </div>
 </div>
 {% endblock %}

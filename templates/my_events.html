@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-
+<!-- header and info -->
 <div class="row flashes">
   <h4 class="cyan accent-3 center-align white-text header-shadow">
     Your events
@@ -7,90 +7,86 @@
   <p class="center-align">You can edit or delete your events here</p>
 </div>
 <div class="row">
+<!-- show user events -->
   {% for event in events %}
     {% if session.user == event.created_by or session.user == "admin" %}
-    <div class="col s12 m4 l3 center-align valign-wrapper">
-    <div class="card">
-      <div class="card-image">
-        {% if event.category_name == "Cycle" %}
-        <img src="{{ url_for('static', filename='images/cycle.jpg') }}" />
-        {% else %} {% if event.category_name == "Coffee" %}
-        <img src="{{ url_for('static', filename='images/coffee.jpg') }}" />
-        {% else %} {% if event.category_name == "Walk" %}
-        <img src="{{ url_for('static', filename='images/walk.jpg') }}" />
-        {% else %} {% if event.category_name == "Market" %}
-        <img src="{{ url_for('static', filename='images/market.jpg') }}" />
-        {% else %} {% if event.category_name == "Social" %}
-        <img src="{{ url_for('static', filename='images/social.jpg') }}" />
-        {% else %} {% if event.category_name == "Workshop" %}
-        <img src="{{ url_for('static', filename='images/workshop.jpg') }}" />
-        {% else %} {% if event.category_name == "Book Club" %}
-        <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" />
-        {% else %} {% if event.category_name == "Language Class" %}
-          <img src="{{ url_for('static', filename='images/language.jpg') }}" />
-        {% else %}
-        <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" />
-        {% endif %}
-        {% endif %}{% endif %}
-        {% endif %} {% endif %}
-        {% endif %} {% endif %}{% endif %}
-      </div>        
-      <div class="event-category">{{ event.category_name }}</div>
-      <div class="card-content valign-wrapper">
-        <p class="event-description center-align">{{ event.event_description }}</p>
-      </div>
-      <div class="card-content card-link-div center-align">
-      <p class="card-title activator">{{ event.event_name }}
-      <i class="fas fa-plus prefix white-text tooltipped" id="event-deets"
-                data-position="right" data-tooltip="Get Details"></i></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title card-link-div center-align">{{ event.event_name }}
-            <i class="fas fa-times prefix white-text tooltipped right" id="event-deets-close"
-            data-position="right" data-tooltip="Close Details"></i>
-            </span>
-                <p><i class="fas fa-list-ul prefix cyan-text text-accent-3 tooltipped sgl-event"
-                data-position="right" data-tooltip="Event Category"></i>
-                {{ event.category_name }}<br>
-                <i class="fas fa-edit prefix cyan-text text-accent-3 tooltipped sgl-event"
-                data-position="right" data-tooltip="Event Description"></i>
-                {{ event.event_description }}<br>
-                <i class="fas fa-calendar-alt prefix cyan-text text-accent-3 tooltipped sgl-event"
-                data-position="right" data-tooltip="Date of Event"></i>
-                {{ event.event_date }}<br>
-                <i class="fas fa-clock prefix cyan-text text-accent-3 tooltipped sgl-event"
-                data-position="right" data-tooltip="Time of Event"></i>
-                {{ event.event_time }}<br>
-                <i class="fas fa-map prefix cyan-text text-accent-3 tooltipped sgl-event"
-                data-position="right" data-tooltip="Event Location"></i>
-                {{ event.location }}<br>
-                <i class="fas fa-map-marker-alt prefix cyan-text text-accent-3 tooltipped sgl-event"
-                data-position="right" data-tooltip="Meet Point"></i>
-                {{ event.meet_point }}<br>
-                    {% if event.free_event == "on" %}
-                    <i class="fas fa-comment-dollar cyan-text text-accent-3 tooltipped sgl-event"
-                     data-position="right" data-tooltip="Free!"></i>
-                    Free event!<br>
-                    {% else %}
-                    <i class="fas fa-comment-dollar cyan-text text-accent-3 tooltipped sgl-event"
-                     data-position="right" data-tooltip="Not Free"></i> 
-                    There is a charge for this event - see description<br>
-                    {% endif %}
-                <i class="fas fa-user prefix cyan-text text-accent-3 tooltipped sgl-event"
-                data-position="right" data-tooltip="Created by user"></i>
-                {{ event.created_by }}<br></p>    
-            </div>
-    <div class="card-action">
-        <a href="{{ url_for('edit_event', event_id=event._id) }}" class="btn func-button cyan accent-3">          
-        Edit 
-        <i class="fas fa-edit right"></i></a>
-        <form action="{{ url_for('delete_event', event_id=event._id) }}" method="POST">
-        <button class="btn func-button light-green accent-4" name="delete" type="submit" onclick="deleteFunction()">
-            <i class="fas fa-times-circle right"></i>
+    <div class="col s12 m4 l3">
+      <div class="card">
+        <div class="card-image">
+            {% if event.category_name == "Cycle" %}
+            <img src="{{ url_for('static', filename='images/cycle.jpg') }}" alt="cycle image" />
+            {% else %} {% if event.category_name == "Coffee" %}
+            <img src="{{ url_for('static', filename='images/coffee.jpg') }}" alt="coffee image"/>
+            {% else %} {% if event.category_name == "Walk" %}
+            <img src="{{ url_for('static', filename='images/walk.jpg') }}" alt="walk image"/>
+            {% else %} {% if event.category_name == "Market" %}
+            <img src="{{ url_for('static', filename='images/market.jpg') }}" alt="market image"/>
+            {% else %} {% if event.category_name == "Social" %}
+            <img src="{{ url_for('static', filename='images/social.jpg') }}" alt="social image"/>
+            {% else %} {% if event.category_name == "Workshop" %}
+            <img src="{{ url_for('static', filename='images/workshop.jpg') }}" alt="workshop image"/>
+            {% else %} {% if event.category_name == "Book Club" %}
+            <img src="{{ url_for('static', filename='images/bookclub.jpg') }}" alt="bookclub image"/>
+            {% else %} {% if event.category_name == "Language Class" %}
+            <img src="{{ url_for('static', filename='images/language.jpg') }}" alt="class image"/>
+            {% else %} <!-- default image -->
+            <img src="{{ url_for('static', filename='images/defaultwall.jpg') }}" alt="default event image"/>
+          {% endif %} {% endif %} {% endif %} {% endif %} 
+          {% endif %} {% endif %} {% endif %} {% endif %}
+        </div>
+        <div class="event-category">{{ event.category_name }}</div>
+        <div class="card-content valign-wrapper center-align">
+          <p class="event-description">{{ event.event_description }}</p>
+        </div>
+        <div class="card-content card-link-div center-align valign-wrapper">
+          <span class="card-title activator">{{ event.event_name }}
+            <i class="fas fa-plus prefix white-text tooltipped" data-position="right" data-tooltip="Get Details">
+            </i>
+          </span>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title card-link-div center-align">{{ event.event_name }}
+            <i class="fas fa-times prefix white-text tooltipped right" data-position="right" data-tooltip="Close Details">
+            </i>
+          </span>
+          <p>
+            <i class="fas fa-list-ul prefix cyan-text text-accent-3 tooltipped sgl-event" data-position="right" data-tooltip="Event Category">
+            </i>{{ event.category_name }}<br />
+            <i class="fas fa-edit prefix cyan-text text-accent-3 tooltipped sgl-event" data-position="right" data-tooltip="Event Description">
+            </i>{{ event.event_description }}<br />
+            <i class="fas fa-calendar-alt prefix cyan-text text-accent-3 tooltipped sgl-event" data-position="right" data-tooltip="Date of Event">
+            </i>{{ event.event_date }}<br />
+            <i class="fas fa-clock prefix cyan-text text-accent-3 tooltipped sgl-event" data-position="right" data-tooltip="Time of Event"
+            ></i>{{ event.event_time }}<br />
+            <i class="fas fa-map prefix cyan-text text-accent-3 tooltipped sgl-event" data-position="right" data-tooltip="Event Location">
+            </i>{{ event.location }}<br />
+            <i class="fas fa-map-marker-alt prefix cyan-text text-accent-3 tooltipped sgl-event" data-position="right" data-tooltip="Meet Point">
+            </i>{{ event.meet_point }}<br />
+                {% if event.free_event == "on" %}
+                <i class="fas fa-comment-dollar cyan-text text-accent-3 tooltipped sgl-event" data-position="right" data-tooltip="Free!">
+                </i>
+                Free event!<br />
+                {% else %}
+                <i class="fas fa-comment-dollar cyan-text text-accent-3 tooltipped sgl-event" data-position="right" data-tooltip="Not Free">
+                </i>
+                There is a charge for this event - see description<br />
+                {% endif %}
+            <i class="fas fa-user prefix cyan-text text-accent-3 tooltipped sgl-event" data-position="right" data-tooltip="Created by user">
+            </i>{{ event.created_by }}<br />
+          </p>
+        </div>
+<!-- action buttons -->
+        <div class="card-action center-align">
+            <a href="{{ url_for('edit_event', event_id=event._id) }}" class="btn func-button cyan accent-3">          
+            Edit 
+            <i class="fas fa-edit right"></i></a>
+            <form action="{{ url_for('delete_event', event_id=event._id) }}" method="POST">
+                <button class="btn func-button light-green accent-4" name="delete" type="submit" onclick="deleteFunction()">
+                <i class="fas fa-times-circle right"></i>
                 Delete
-        </button>
-        </form>
-    </div>
+                </button>
+            </form>
+        </div>
     </div>
   </div>
   {% endif %}

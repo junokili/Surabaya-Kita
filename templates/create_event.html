@@ -1,114 +1,115 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row flashes">
-<h4 class="cyan accent-3 center-align white-text header-shadow">Create your own event</h4> 
+    <h4 class="cyan accent-3 center-align white-text header-shadow">Create your own event</h4> 
 </div>
 {% if session.user %}   
 <p>Fill in the form below to add your own event. Please fill in necessary additional details 
 in the event description, including any event fees or requirements and e.g distance / duration and pace for a bike ride or walk.
 If you don't think we have the right category or the right location for your event then please 
 <a href="{{ url_for('contact_us') }}" class="cyan-text text-accent-3">contact us</a>  
-and we'll see what we can do! </p> 
+and we'll see what we can do! </p>
+<!-- create event form --> 
 <div class="container">
-<div class="card-panel grey lighten-5">
-  <div class="row">
-    <form class="col s12" method="POST" action="{{ url_for('create_event') }}">
-    <!-- event category -->
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="fas fa-list-ul prefix cyan-text text-accent-3"></i>
-    <select id="category_name" name="category_name" class="validate" required>
-      <option value="" disabled selected>Choose category</option>
-      {% for category in categories %}
-        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-      {% endfor %}
-    </select>
-    <label for="category_name">Event Category</label>
-      </div>
-  </div>
-  <!-- event name -->
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-exclamation-circle prefix cyan-text text-accent-3"></i>
-          <input id="event_name" name="event_name" type="text" class="validate"
-          minlength="5" maxlength="50" required>
-          <label for="event_name">Event Name</label>
-        </div>
-      </div>
-      <!-- event description -->
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-edit prefix cyan-text text-accent-3"></i>
-          <textarea id="event_description" name="event_description" class="materialize-textarea validate" 
-          minlength="5" maxlength="250" required></textarea>
-          <label for="event_description">Event Description</label>
-      </div>
-      </div>
-<!-- event date -->
-           <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-calendar-alt prefix cyan-text text-accent-3"></i>
-          <input id="event_date" name="event_date" type="text" class="datepicker validate"
-          required>
-          <label for="event_date">Date of Event</label>
-        </div>
-      </div>
-<!-- event time -->
-           <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-clock prefix cyan-text text-accent-3"></i>
-          <input id="event_time" name="event_time" type="text" class="timepicker validate"
-          required>
-          <label for="event_time">Time of Event</label>
-        </div>
-      </div>
-      <!-- event location -->
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="fas fa-map prefix cyan-text text-accent-3"></i>
-    <select id="location" name="location" class="validate" required>
-      <option value="" disabled selected>Choose event area</option>
-      {% for location in locations %}
-        <option value="{{ location.location }}">{{ location.location }}</option>
-      {% endfor %}
-    </select>
-    <label for="location">Event Area</label>
-      </div>
-  </div>
-      <!-- event meet point -->
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-map-marker-alt prefix cyan-text text-accent-3"></i>
-          <input id="meet_point" name="meet_point" type="text" class="validate" 
-          minlength="5" maxlength="50" required>
-          <label for="meet_point">Meet Point</label>
-      </div>
-      </div>
-        <!-- Switch -->
-    <div class="row">
-        <div class="input-field col s12">
-        <div class="switch">
-                  <i class="fas fa-comment-dollar prefix cyan-text text-accent-3"></i>
-                  <label for="free_event">
-            <input type="checkbox" id="free_event" name="free_event">
-            <span class="lever"></span>
-             Select if there is a fee for this event. Please include fee in event description.
-            </label>
-        </div>
-    </div>
-    </div>
-        <!-- submit button -->
+    <div class="card-panel grey lighten-5">
         <div class="row">
-        <div class="col s12 center-align">
-          <button class="btn-large cyan accent-3" type="submit">
-          Create Event
-    <i class="fas fa-plus-square right"></i>
-  </button>
+            <form class="col s12" method="POST" action="{{ url_for('create_event') }}">
+            <!-- event category -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-list-ul prefix cyan-text text-accent-3"></i>
+                        <select id="category_name" name="category_name" class="validate" required>
+                        <option value="" disabled selected>Choose category</option>
+                        {% for category in categories %}
+                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+                        </select>
+                        <label for="category_name">Event Category</label>
+                    </div>
+                </div>
+            <!-- event name -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-exclamation-circle prefix cyan-text text-accent-3"></i>
+                        <input id="event_name" name="event_name" type="text" class="validate"
+                        minlength="5" maxlength="50" required>
+                        <label for="event_name">Event Name</label>
+                    </div>
+                </div>
+            <!-- event description -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-edit prefix cyan-text text-accent-3"></i>
+                        <textarea id="event_description" name="event_description" class="materialize-textarea validate" 
+                        minlength="5" maxlength="250" required></textarea>
+                        <label for="event_description">Event Description</label>
+                    </div>
+                </div>
+            <!-- event date -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-calendar-alt prefix cyan-text text-accent-3"></i>
+                        <input id="event_date" name="event_date" type="text" class="datepicker validate"
+                        required>
+                        <label for="event_date">Date of Event</label>
+                    </div>
+                </div>
+            <!-- event time -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-clock prefix cyan-text text-accent-3"></i>
+                        <input id="event_time" name="event_time" type="text" class="timepicker validate"
+                        required>
+                        <label for="event_time">Time of Event</label>
+                    </div>
+                </div>
+            <!-- event location -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-map prefix cyan-text text-accent-3"></i>
+                        <select id="location" name="location" class="validate" required>
+                        <option value="" disabled selected>Choose event area</option>
+                        {% for location in locations %}
+                        <option value="{{ location.location }}">{{ location.location }}</option>
+                        {% endfor %}
+                        </select>
+                        <label for="location">Event Area</label>
+                    </div>
+                </div>
+            <!-- event meet point -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-map-marker-alt prefix cyan-text text-accent-3"></i>
+                        <input id="meet_point" name="meet_point" type="text" class="validate" 
+                        minlength="5" maxlength="50" required>
+                        <label for="meet_point">Meet Point</label>
+                    </div>
+                </div>
+            <!-- Switch -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="switch">
+                            <i class="fas fa-comment-dollar prefix cyan-text text-accent-3"></i>
+                            <label for="free_event">
+                            <input type="checkbox" id="free_event" name="free_event">
+                            <span class="lever"></span>
+                            Select if there is a fee for this event. Please include fee in event description.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            <!-- submit button -->
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button class="btn-large cyan accent-3" type="submit">
+                            Create Event
+                            <i class="fas fa-plus-square right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-        </div>
-    </form>
-  </div>
-  </div>
+    </div>
 </div>
 {% endif %}
 <p class="center-align">

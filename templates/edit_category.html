@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row flashes">
-<h4 class="cyan accent-3 center-align white-text header-shadow">Edit Category</h4> 
-</div>  <div class="card-panel grey lighten-5">
+    <h4 class="cyan accent-3 center-align white-text header-shadow">Edit Category</h4> 
+</div>  
+<div class="card-panel grey lighten-5">
   <div class="row">
     <form class="col s12" method="POST" action="{{ url_for('edit_category', category_id=category._id) }}">
-
   <!-- category name -->
       <div class="row">
         <div class="input-field col s12">
@@ -15,19 +15,18 @@
           <label for="category_name">Category Name</label>
         </div>
       </div>
-     
-        <!-- submit button -->
-        <div class="row">
+    <!-- submit button -->
+      <div class="row">
         <div class="col s12 center-align">
-        <button class="btn-large cyan accent-3" type="submit">
-          Update 
-    <i class="fas fa-edit right"></i>
-      </button>
-                <a href="{{ url_for('get_categories') }}" class="btn-large light-green accent-4">
-        Cancel<i class="fas fa-times-circle right"></i></a>
+            <button class="btn-large cyan accent-3" type="submit">
+                Update 
+                <i class="fas fa-edit right"></i>
+            </button>
+            <a href="{{ url_for('get_categories') }}" class="btn-large light-green accent-4">
+            Cancel<i class="fas fa-times-circle right"></i></a>
         </div>
-        </div>      
+      </div>      
     </form>
   </div>
-  </div>
+</div>
 {% endblock %}
