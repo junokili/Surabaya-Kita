@@ -8,7 +8,7 @@ function removeFormSuccess() {
     el += `<p class="sm-text center-align">Thanks! We've received your message and will be in touch shortly.</p>
         <div class="row all-events-button">
       <div class="col s12 center-align">
-        <a href="{{ url_for('get_events') }}" class="btn-large light-green accent-2 all-events-button">
+        <a href="get_events" class="btn-large light-green accent-2 all-events-button">
           Back to all Events<i class="fas fa-calendar-alt right"></i>
         </a>
       </div>
