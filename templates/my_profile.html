@@ -50,4 +50,12 @@
 </div>
 {% endif %} 
 {% endfor %} 
+<!-- all events button -->
+<div class="row all-events-button">
+    <div class="col s12 center-align">
+        <a href="{{ url_for('get_events') }}" class="btn-large light-green accent-2 all-events-button">
+        All Events<i class="fas fa-calendar-alt right"></i>
+       </a>
+    </div>
+</div>
 {% endblock %}
