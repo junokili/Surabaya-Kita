@@ -1,4 +1,4 @@
-/*jshint esversion: 6 */
+// code validated through JSHint: https://jshint.com/
 function sendMail(contact) {
     emailjs.send("gmail", "sby_email", {
         "name": contact.name.value,
@@ -8,7 +8,7 @@ function sendMail(contact) {
     .then(
         function(response) {
             console.log("sent", response);
-            removeFormSuccess();
+            removeFormSuccess(); // Success confirmation message and form removal 
         },
         function(error) {
             console.log("fail", error);

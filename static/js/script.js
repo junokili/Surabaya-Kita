@@ -1,3 +1,6 @@
+// code validated through JSHint: https://jshint.com/
+// jshint esversion: 'let' is only available in ES6 (use 'esversion: 6').
+// materialize script for functionality of built in components
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
     $('.collapsible').collapsible();
